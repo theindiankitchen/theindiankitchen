@@ -76,14 +76,12 @@ const description =
 
   <MenuPreview client:visible />
 
-  {/* ORDER: full-bleed background that swaps per provider, hover list. */}
+  {/* ORDER: original Lovable Order and Delivery section (cream bracket cards). */}
   <OrderDelivery uberUrl={UBER_EATS_URL} doordashUrl={DOORDASH_URL} pickupUrl={PICKUP_URL} />
 
   {/* INSTAGRAM: video reels, placed above the reviews. */}
   <InstagramGrid />
 
-  {/* REVIEWS: premium carousel with curated Google placeholders, on cream. */}
-  <section id="reviews" class="py-24 md:py-32 bg-olive relative overflow-hidden">
-    <ReviewsCarousel client:visible />
-  </section>
+  {/* REVIEWS: original Lovable Loved across Toronto section (three static cards). */}
+  <ReviewsCarousel />
 </BaseLayout>

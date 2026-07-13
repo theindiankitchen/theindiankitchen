@@ -6,43 +6,34 @@ type Props = {
   pickupUrl: string;
 };
 
-// Original Lovable design: solid dark green section, centered heading block,
-// three bracket-cornered cards. No background image, no hover swap.
+// Exact port of the original Lovable "Order and Delivery" section
+// (src/routes/index.tsx). Copy, not reinterpretation.
 export default function OrderDelivery({ uberUrl, doordashUrl, pickupUrl }: Props) {
   const ORDER = [
-    { name: "Uber Eats", label: "Delivery", sub: "20 to 30 min delivery", cta: "Order on Uber", href: uberUrl, external: true },
-    { name: "DoorDash", label: "Delivery", sub: "Late night until 1 AM", cta: "Order on DoorDash", href: doordashUrl, external: true },
-    { name: "Pickup", label: "In store", sub: "Ready in 15 min", cta: "Order Pickup", href: pickupUrl, external: false },
+    { name: "Uber Eats", desc: "20–30 min delivery", cta: "Order on Uber", href: uberUrl },
+    { name: "DoorDash", desc: "Late-night until 1AM", cta: "Order on DoorDash", href: doordashUrl },
+    { name: "Pickup", desc: "Ready in 15 min", cta: "Order Pickup", href: pickupUrl },
   ];
 
   return (
     <section id="order" className="py-24 md:py-32 bg-olive text-beige relative overflow-hidden">
+      <div className="absolute inset-0 pattern-tile opacity-[0.06] pointer-events-none" />
       <div className="container-x relative">
         <div className="max-w-3xl mx-auto text-center">
-          <span className="text-[11px] uppercase tracking-[0.35em] text-saffron">Order and Delivery</span>
           <h2 className="font-serif text-4xl md:text-6xl mt-3">Bring The Kitchen home.</h2>
-          <p className="mt-5 text-beige/75">Delivery and pickup available across Toronto.</p>
+          <p className="mt-5 text-beige/70">Delivery and pickup available across downtown Toronto.</p>
         </div>
-
-        <div className="mt-14 grid sm:grid-cols-3 gap-6 max-w-[1120px] mx-auto">
+        <div className="mt-14 grid sm:grid-cols-3 gap-5 max-w-4xl mx-auto">
           {ORDER.map((o) => (
-            <div
-              key={o.name}
-              className="corner-ornaments relative rounded-2xl bg-card ring-1 ring-saffron/10 p-8 md:p-9 text-center flex flex-col items-center"
-            >
+            <a key={o.name} href={o.href} className="exotic-border corner-ornaments group p-8 bg-beige border-saffron text-olive shadow-[inset_0_0_0_1px_rgba(179,101,18,0.2),0_0_25px_-8px_rgba(179,101,18,0.22)] hover:-translate-y-1 hover:shadow-[inset_0_0_0_1px_rgba(179,101,18,0.2),0_10px_40px_-10px_rgba(179,101,18,0.25)] transition-all duration-300">
               <span className="corner tl" /><span className="corner tr" /><span className="corner bl" /><span className="corner br" />
-              <span className="text-[10px] uppercase tracking-[0.3em] text-saffron">{o.label}</span>
-              <h3 className="font-serif text-2xl md:text-3xl mt-3 text-beige">{o.name}</h3>
-              <p className="text-sm text-beige/70 mt-2">{o.sub}</p>
-              <a
-                href={o.href}
-                target={o.external ? "_blank" : undefined}
-                rel={o.external ? "noopener noreferrer" : undefined}
-                className="btn-arch btn-arch--solid mt-7"
-              >
-                <span className="btn-arch__label">{o.cta} <ArrowUpRight className="size-4" /></span>
-              </a>
-            </div>
+              <div className="flex items-start justify-between">
+                <h3 className="font-serif text-2xl">{o.name}</h3>
+                <ArrowUpRight className="size-5 text-saffron group-hover:rotate-45 transition-transform" />
+              </div>
+              <p className="text-sm text-olive/70 mt-2">{o.desc}</p>
+              <span className="mt-10 block text-xs uppercase tracking-widest text-olive/80">{o.cta}</span>
+            </a>
           ))}
         </div>
       </div>
