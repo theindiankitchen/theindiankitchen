@@ -1,0 +1,165 @@
+---
+import "../styles/global.css";
+import SiteHeader from "../components/SiteHeader.tsx";
+import Footer from "../components/Footer.astro";
+
+export interface Props {
+  title: string;
+  description: string;
+  /** Path-relative OG/Twitter image, resolved against `site`. */
+  ogImage?: string;
+}
+
+const { title, description, ogImage = "/assets/hero-spread.jpg" } = Astro.props;
+
+const site = Astro.site ?? new URL("https://www.theindiankitchen.ca");
+const canonical = new URL(Astro.url.pathname, site).href;
+const ogImageAbsolute = new URL(ogImage, site).href;
+
+// Restaurant structured data. Values marked PLACEHOLDER should be confirmed with
+// the client before launch. Present tense, the restaurant is open.
+const restaurantJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  name: "The Indian Kitchen, Biryani and Dosa",
+  description:
+    "Authentic Hyderabadi biryani and South Indian dosa in Toronto. Modern Indian comfort food, crafted with tradition.",
+  url: site.href,
+  telephone: "+1-416-555-0192",
+  servesCuisine: ["Indian", "South Indian", "Hyderabadi", "Indo-Chinese"],
+  priceRange: "$$",
+  image: ogImageAbsolute,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "3334 Yonge St",
+    addressLocality: "North York, Toronto",
+    addressRegion: "ON",
+    postalCode: "M4N 2M4",
+    addressCountry: "CA",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"],
+      opens: "11:30",
+      closes: "23:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Friday", "Saturday", "Sunday"],
+      opens: "11:30",
+      closes: "01:00",
+    },
+  ],
+  sameAs: ["https://www.instagram.com/theindiankitchen.ca"],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/assets/brand-icon.png" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="The Indian Kitchen, Biryani and Dosa" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageAbsolute} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbsolute} />
+
+    <!-- Fonts: Cormorant Garamond (display) and Inter (body). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(restaurantJsonLd)}
+    />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body>
+    <SiteHeader client:load />
+
+    <slot name="hero" />
+
+    <div class="reveal-content">
+      <slot />
+    </div>
+
+    <Footer />
+
+    <script>
+      // Scroll reveal wiring: measure footer height for the reveal spacer, and
+      // disable the effect for reduced motion. Also pause any hero video off screen.
+      const root = document.documentElement;
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+      function applyRevealMode() {
+        if (prefersReduced.matches) {
+          root.classList.add("reveal-off");
+        } else {
+          root.classList.remove("reveal-off");
+        }
+      }
+
+      function measureFooter() {
+        const footer = document.querySelector<HTMLElement>(".site-footer");
+        if (!footer) return;
+        root.style.setProperty("--footer-height", footer.offsetHeight + "px");
+      }
+
+      function pauseHeroVideoOffscreen() {
+        const video = document.querySelector<HTMLVideoElement>(".reveal-hero video[data-autopause]");
+        if (!video) return;
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                video.play().catch(() => {});
+              } else {
+                video.pause();
+              }
+            }
+          },
+          { threshold: 0.05 }
+        );
+        io.observe(video);
+      }
+
+      function observeFooter() {
+        const footer = document.querySelector<HTMLElement>(".site-footer");
+        if (!footer || !("ResizeObserver" in window)) return;
+        // Keep the reveal spacer correct as the footer reflows (mobile,
+        // orientation, font load), on every viewport including mobile.
+        new ResizeObserver(measureFooter).observe(footer);
+      }
+
+      function init() {
+        applyRevealMode();
+        measureFooter();
+        observeFooter();
+        pauseHeroVideoOffscreen();
+      }
+
+      window.addEventListener("resize", measureFooter, { passive: true });
+      window.addEventListener("load", measureFooter);
+      window.addEventListener("orientationchange", measureFooter);
+      prefersReduced.addEventListener("change", applyRevealMode);
+      init();
+    </script>
+  </body>
+</html>

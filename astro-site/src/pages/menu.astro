@@ -1,0 +1,97 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CinematicMenuSection from "../components/CinematicMenuSection.tsx";
+import ReservationForm from "../components/ReservationForm.tsx";
+import {
+  BIRYANI, TIFFINS, DOSA, STREET, APPETIZERS, SOUPS, SNACKS, CURRY, DRINKS, DESSERTS,
+} from "../data/menu.ts";
+
+const SECTION_NAV: [string, string][] = [
+  ["Biryani & Rice", "biryani"],
+  ["Tiffins", "tiffins"],
+  ["Dosa", "dosa"],
+  ["Street Style", "street"],
+  ["Appetizers", "appetizers"],
+  ["Soups", "soups"],
+  ["Snacks", "snacks"],
+  ["Curries & Bread", "curries"],
+  ["Drinks", "drinks"],
+  ["Desserts", "desserts"],
+];
+
+const title = "Menu, Biryani, Dosa and South Indian | The Indian Kitchen Toronto";
+const description =
+  "An immersive menu, Hyderabadi dum biryani, Madras dosa, Indo-Chinese, appetizers, curries, drinks and desserts at The Indian Kitchen, Toronto.";
+---
+
+<BaseLayout title={title} description={description}>
+  {/* HERO: image background with the sticky reveal. */}
+  <section slot="hero" class="reveal-hero flex items-center">
+    {/* IMAGE GOES HERE: menu hero background, swap after the photoshoot. */}
+    <img src="/assets/menu-dosa-hero.jpg" alt="" aria-hidden="true" class="absolute inset-0 size-full object-cover" />
+    <div aria-hidden="true" class="img-overlay"></div>
+
+    <div class="container-x relative z-10 pt-24">
+      <div class="max-w-3xl">
+        <span class="text-[11px] uppercase tracking-[0.4em] text-saffron">The Indian Kitchen, Toronto</span>
+        <h1 class="font-serif text-5xl md:text-7xl mt-5 leading-[1.02] text-beige">
+          A cinematic walk<br />through our menu.
+        </h1>
+        <p class="mt-6 text-beige/75 text-base md:text-lg leading-relaxed max-w-2xl">
+          Every plate, slow built the way it should be, from handi biryani sealed over a low
+          flame to filter coffee whipped in a steel tumbler.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* CUISINE bar: jump-to category chips, first thing after the hero. */}
+  <section aria-label="Menu categories" class="bg-cream-pattern text-olive py-6 md:py-8">
+    <div class="container-x">
+      <div class="flex flex-nowrap md:flex-wrap md:justify-center items-center gap-2.5 md:gap-2 overflow-x-auto md:overflow-visible snap-x snap-proximity -mx-6 px-6 md:mx-0 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden [-webkit-overflow-scrolling:touch]">
+        {SECTION_NAV.map(([label, anchor]) => (
+          <a href={`#${anchor}`} class="chip-arch chip-arch--idle-cream chip-arch--sm shrink-0 snap-center">
+            <span class="chip-arch__label">{label}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CinematicMenuSection client:visible variant="cream" id="biryani" kicker="Signature, Slow Cooked" title="Biryani & Rice" intro="Aged basmati layered with overnight-marinated meat, sealed and slow-cooked over a low flame in the dum tradition." items={BIRYANI} />
+  <CinematicMenuSection client:visible variant="green" id="tiffins" kicker="Tiffins, Idly, Vada & Puri" title="South Indian Tiffins" intro="Steamed, fluffy and ghee-kissed, the South Indian breakfast counter, served all day." items={TIFFINS} />
+  <CinematicMenuSection client:visible variant="cream" id="dosa" kicker="Madras Mornings" title="Dosa" intro="Fermented rice-and-lentil crepes, ghee-roasted to a deep gold and served the South Indian way." items={DOSA} />
+  <CinematicMenuSection client:visible variant="green" id="street" kicker="Street Style, Indo-Chinese" title="Wok & Street Food" intro="High-flame wok cookery, smoky, glossy, unmistakably Indo-Chinese." items={STREET} />
+  <CinematicMenuSection client:visible variant="cream" id="appetizers" kicker="Sizzling, Small Plates" title="Appetizers" intro="Bite-sized, deeply-spiced openers, built for sharing, dialled for heat." items={APPETIZERS} />
+  <CinematicMenuSection client:visible variant="green" id="soups" kicker="Comfort, Slow Simmered" title="Soups" intro="Restorative, aromatic broths served piping-hot in rustic bowls." items={SOUPS} />
+  <CinematicMenuSection client:visible variant="cream" id="snacks" kicker="Tea Time, Irani Cafe" title="Snacks" intro="Bakery-counter favourites, flaky puffs, sharp samosas, salty-sweet biscuits." items={SNACKS} />
+  <CinematicMenuSection client:visible variant="green" id="curries" kicker="Mains, Curries & Bread" title="Curries, Wraps & Bread" intro="Slow-built gravies served with handmade rumali roti, layered parota and rolled wraps." items={CURRY} />
+  <CinematicMenuSection client:visible variant="cream" id="drinks" kicker="Beverage, Cafe & Cooler" title="Drinks" intro="From steel-tumbler filter coffee to chilled rose milk, the Indian cafe, end to end." items={DRINKS} />
+  <CinematicMenuSection client:visible variant="green" id="desserts" kicker="Sweet, Festive Finish" title="Desserts" intro="Warm, festive, syrup-soaked, the right ending to every meal." items={DESSERTS} />
+
+  {/* RESERVATION: text left, framed form right, on cream. */}
+  <section id="reserve" class="py-24 md:py-32 bg-cream-cover text-olive relative overflow-hidden scroll-mt-24">
+    <div class="container-x grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div class="text-center lg:text-left">
+        <span class="text-[11px] uppercase tracking-[0.4em] text-saffron">Reservations</span>
+        <div class="mt-5 flex items-center justify-center lg:justify-start gap-3 text-saffron">
+          <span class="h-px w-10 bg-saffron/50"></span>
+          <span class="size-2 rotate-45 border border-saffron"></span>
+          <span class="h-px w-10 bg-saffron/50"></span>
+        </div>
+        <h2 class="font-serif text-4xl md:text-6xl mt-6 leading-[1.05] text-olive">Request a Reservation</h2>
+        <p class="mt-6 text-olive/75 text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
+          Tell us when you would like to join us and how many will be dining. This is a request to
+          book, not an instant confirmation. We will confirm your table shortly by phone or email.
+        </p>
+        <div class="mt-8">
+          <a href="/catering" class="btn-arch btn-arch--outline" style="--btn-surface: #e1c7ae;">
+            <span class="btn-arch__label">Request Catering</span>
+          </a>
+        </div>
+      </div>
+
+      <ReservationForm client:visible />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,66 @@
+---
+import Icon from "./Icon.astro";
+
+// GOES HERE: swap official-logo.png after the final brand art is ready.
+const officialLogo = "/assets/official-logo.png";
+
+const NAV = [
+  { label: "Menu", href: "/menu" },
+  { label: "Catering", href: "/catering" },
+  { label: "Contact", href: "/contact" },
+];
+---
+
+<footer class="site-footer text-beige relative">
+  <div class="container-x py-14 md:py-12 text-center flex flex-col items-center">
+    {/* IMAGE GOES HERE: footer wordmark, swap official-logo.png after final art. */}
+    <a href="/" aria-label="The Indian Kitchen, home" class="inline-block">
+      <img
+        src={officialLogo}
+        alt="The Indian Kitchen, Biryani and Dosa"
+        style="height: var(--footer-logo-height);"
+        class="w-auto max-w-[80vw] object-contain drop-shadow-[0_6px_18px_rgba(0,0,0,0.45)]"
+      />
+    </a>
+
+    <p class="mt-6 max-w-md text-base text-beige/70 leading-relaxed">
+      Modern Indian comfort food, crafted with care in Toronto. Biryani, dosa,
+      and the flavours of home.
+    </p>
+
+    <nav class="mt-7 flex flex-wrap items-center justify-center gap-x-10 gap-y-3">
+      {NAV.map((n) => (
+        <a
+          href={n.href}
+          class="font-display text-lg uppercase tracking-[0.2em] text-beige hover:text-saffron transition-colors"
+        >
+          {n.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="mt-7 flex flex-col items-center gap-2 text-base text-beige/80">
+      <a href="tel:+14165550192" class="hover:text-saffron transition-colors">+1 (416) 555-0192</a>
+      <a href="mailto:hello@theindiankitchen.ca" class="hover:text-saffron transition-colors">hello@theindiankitchen.ca</a>
+      <p class="text-beige/70">3334 Yonge St, North York, Toronto, ON</p>
+    </div>
+
+    <div class="mt-7 flex items-center justify-center gap-4">
+      <a href="https://www.instagram.com/theindiankitchen.ca" target="_blank" rel="noopener noreferrer external" aria-label="Instagram" class="size-12 rounded-full border border-beige/20 grid place-items-center hover:bg-saffron hover:text-matte hover:border-saffron transition-colors">
+        <Icon name="instagram" class="size-5" />
+      </a>
+      <a href="#" aria-label="Facebook" class="size-12 rounded-full border border-beige/20 grid place-items-center hover:bg-saffron hover:text-matte hover:border-saffron transition-colors">
+        <Icon name="facebook" class="size-5" />
+      </a>
+      <a href="#" aria-label="Twitter" class="size-12 rounded-full border border-beige/20 grid place-items-center hover:bg-saffron hover:text-matte hover:border-saffron transition-colors">
+        <Icon name="twitter" class="size-5" />
+      </a>
+    </div>
+
+    <div class="mt-8 pt-6 border-t border-beige/10 w-full max-w-3xl flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 text-xs uppercase tracking-[0.2em] text-beige/50">
+      <span>&copy; 2026 The Indian Kitchen</span>
+      <span class="hidden sm:inline text-saffron">&#8226;</span>
+      <span>Crafted in Toronto</span>
+    </div>
+  </div>
+</footer>

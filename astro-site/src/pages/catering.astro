@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CateringForm from "../components/CateringForm.tsx";
+import WhyJourney from "../components/WhyJourney.tsx";
+
+const title = "Catering | The Indian Kitchen, Toronto";
+const description =
+  "Premium Indian catering in Toronto, weddings, corporate events, private parties. Authentic, freshly prepared, vegetarian and halal options.";
+---
+
+<BaseLayout title={title} description={description}>
+  {/* HERO: leads straight into the enquiry form. */}
+  <section slot="hero" class="reveal-hero flex items-center justify-center text-center">
+    {/* IMAGE GOES HERE: catering hero background, swap after the photoshoot. */}
+    <img src="/assets/hero-spread.jpg" alt="" aria-hidden="true" class="absolute inset-0 size-full object-cover" />
+    <div aria-hidden="true" class="img-overlay"></div>
+
+    <div class="container-x relative z-10 max-w-3xl pt-24">
+      <span class="inline-block text-[11px] uppercase tracking-[0.45em] text-saffron">Private Events and Catering</span>
+      <h1 class="font-serif text-4xl sm:text-5xl md:text-7xl mt-6 leading-[1.05]">
+        Catering crafted with <span class="text-saffron italic">Indian warmth</span>.
+      </h1>
+      <p class="mt-6 text-beige/80 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+        From family gatherings to corporate events, let us bring authentic Indian flavours to your
+        table, slow-cooked, freshly plated, served with care.
+      </p>
+      <div class="mt-10 flex justify-center">
+        <a href="#inquiry" class="btn-arch btn-arch--solid" style="--btn-surface: #061508;">
+          <span class="btn-arch__label">Start Your Enquiry</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* ENQUIRY FORM: text left, framed form right, on cream. */}
+  <section id="inquiry" class="relative py-24 md:py-32 bg-cream-pattern text-olive scroll-mt-24">
+    <div class="container-x grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div class="text-center lg:text-left">
+        <span class="text-[11px] uppercase tracking-[0.4em] text-saffron">Catering Inquiry</span>
+        <div class="mt-5 flex items-center justify-center lg:justify-start gap-3 text-saffron">
+          <span class="h-px w-10 bg-saffron/50"></span>
+          <span class="size-2 rotate-45 border border-saffron"></span>
+          <span class="h-px w-10 bg-saffron/50"></span>
+        </div>
+        <h2 class="font-serif text-4xl md:text-6xl mt-6 leading-[1.05] text-olive">Tell us about your event.</h2>
+        <p class="mt-6 text-olive/75 text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
+          Share a few details and our catering team will reach out within one business day with a
+          tailored proposal. From intimate dinners to large receptions, we cook it fresh on the day.
+        </p>
+      </div>
+
+      <CateringForm client:load />
+    </div>
+  </section>
+
+  {/* WHY CATER WITH US: pinned horizontal journey. */}
+  <WhyJourney client:visible />
+</BaseLayout>

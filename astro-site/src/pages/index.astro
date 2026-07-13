@@ -1,0 +1,89 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import WelcomeGreetings from "../components/WelcomeGreetings.tsx";
+import Marquee from "../components/Marquee.astro";
+import SignatureDishesCarousel from "../components/SignatureDishesCarousel.tsx";
+import MenuPreview from "../components/MenuPreview.tsx";
+import InstagramGrid from "../components/InstagramGrid.astro";
+import ReviewsCarousel from "../components/ReviewsCarousel.tsx";
+import OrderDelivery from "../components/OrderDelivery.tsx";
+
+// ---------------------------------------------------------------------------
+// Delivery storefront links. GOES HERE: replace all three with the real URLs.
+// Uber Eats and DoorDash open in a new tab. PICKUP_URL is a placeholder that
+// may become a phone number (tel:) or an online ordering link later.
+// ---------------------------------------------------------------------------
+const UBER_EATS_URL = "#"; // PLACEHOLDER
+const DOORDASH_URL = "#"; // PLACEHOLDER
+const PICKUP_URL = "#"; // PLACEHOLDER
+
+const title = "The Indian Kitchen, Biryani and Dosa | Toronto";
+const description =
+  "Authentic Hyderabadi biryani and South Indian dosa in Toronto. Modern Indian comfort food, crafted with tradition.";
+---
+
+<BaseLayout title={title} description={description}>
+  {/* HERO: dark image background with typewriter welcome. Uses the sticky reveal. */}
+  <section slot="hero" class="reveal-hero flex items-center justify-center text-center">
+    {/* IMAGE GOES HERE: dark hero background, swap after the photoshoot. */}
+    <img src="/assets/hero-interior.jpg" alt="" aria-hidden="true" class="absolute inset-0 size-full object-cover" />
+    <div aria-hidden="true" class="img-overlay"></div>
+
+    <div class="container-x relative z-10 flex flex-col items-center pt-24 pb-16">
+      <div class="flex flex-col items-center text-beige select-none w-full max-w-[92vw] md:max-w-[70vw]">
+        <span class="font-serif text-sm sm:text-base md:text-lg tracking-[0.35em] uppercase mb-1 md:mb-2">
+          THE
+        </span>
+        <h1 class="font-serif font-semibold text-[clamp(1.75rem,8.5vw,5.5rem)] leading-[0.95] tracking-[0.1em] uppercase whitespace-nowrap">
+          INDIAN KITCHEN
+        </h1>
+        <span class="font-sans font-medium text-xs sm:text-sm md:text-base tracking-[0.32em] uppercase text-saffron mt-4 md:mt-6">
+          BIRYANI &amp; DOSA
+        </span>
+      </div>
+
+      <WelcomeGreetings client:load />
+
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a href="/menu" class="btn-arch btn-arch--solid">
+          <span class="btn-arch__label">View Menu</span>
+        </a>
+        <a href="/menu#reserve" class="btn-arch btn-arch--outline" style="--btn-surface: #061508;">
+          <span class="btn-arch__label">Reserve a Table</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* ABOUT: pattern background, calm premium introduction. */}
+  <section id="about" class="bg-cream-pattern text-olive py-24 md:py-32">
+    <div class="container-x text-center max-w-3xl mx-auto">
+      <span class="text-[11px] uppercase tracking-[0.35em] text-saffron">Our Kitchen</span>
+      <h2 class="font-serif text-4xl md:text-6xl mt-4 leading-[1.05]">A taste of India, crafted in Toronto.</h2>
+      <p class="mt-8 text-lg md:text-xl leading-relaxed text-olive/80">
+        The Indian Kitchen is a modern home for the food we grew up on. We slow cook
+        Hyderabadi biryani over a low flame, griddle dosa to a deep gold, and pour
+        filter coffee the way it is meant to be. Classic recipes, generous hospitality,
+        and the warmth of a family table on Yonge Street.
+      </p>
+    </div>
+  </section>
+
+  {/* MARQUEE: moved before Signature Dishes. */}
+  <Marquee />
+
+  <SignatureDishesCarousel client:visible />
+
+  <MenuPreview client:visible />
+
+  {/* ORDER: full-bleed background that swaps per provider, hover list. */}
+  <OrderDelivery client:visible uberUrl={UBER_EATS_URL} doordashUrl={DOORDASH_URL} pickupUrl={PICKUP_URL} />
+
+  {/* INSTAGRAM: video reels, placed above the reviews. */}
+  <InstagramGrid />
+
+  {/* REVIEWS: premium carousel with curated Google placeholders, on cream. */}
+  <section id="reviews" class="pt-14 md:pt-16 pb-24 md:pb-28 bg-cream-pattern relative">
+    <ReviewsCarousel client:visible />
+  </section>
+</BaseLayout>
