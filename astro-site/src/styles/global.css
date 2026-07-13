@@ -112,12 +112,6 @@
   .container-x { padding-inline: 2.5rem; }
 }
 
-/* Single source of truth for the 6-edge pointed hexagon button/chip shape:
-   flat top and bottom, a single point at the left and right. */
-:root {
-  --hex-clip: polygon(14px 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 14px 100%, 0 50%);
-}
-
 /* ---------- Cream pattern background (tiled, never stretched) ---------- */
 /* Opaque cream underneath so the block is solid before the tile loads.
    GOES HERE: /public/cream-bg.png is the brand pattern, swap after final art. */
@@ -181,8 +175,8 @@
   line-height: 1;
   cursor: pointer;
   isolation: isolate;
-  clip-path: var(--hex-clip);
-  transition: color 0.3s ease, background 0.3s ease;
+  border-radius: 8px;
+  transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease;
 }
 .chip-arch__label {
   position: relative;
@@ -197,42 +191,26 @@
 .chip-arch--active {
   background: var(--saffron);
   color: var(--beige);
+  border: 1.5px solid var(--saffron);
 }
+/* On-green outline chip: copper border, cream text, green interior. */
 .chip-arch--idle {
-  background: var(--saffron);
+  background: transparent;
   color: var(--beige);
+  border: 1.5px solid var(--saffron);
 }
-.chip-arch--idle::before {
-  content: "";
-  position: absolute;
-  inset: 1.5px;
-  z-index: 1;
-  background: var(--olive);
-  clip-path: inherit;
-  transition: background 0.3s ease;
-}
-.chip-arch--idle:hover::before {
-  background: color-mix(in oklab, var(--saffron) 20%, var(--olive));
+.chip-arch--idle:hover {
+  background: color-mix(in oklab, var(--saffron) 22%, transparent);
 }
 /* On-cream outline chip: copper border, green text, cream interior. */
 .chip-arch--idle-cream {
-  background: var(--saffron);
+  background: transparent;
   color: var(--olive);
-}
-.chip-arch--idle-cream::before {
-  content: "";
-  position: absolute;
-  inset: 1.5px;
-  z-index: 1;
-  background: var(--beige);
-  clip-path: inherit;
-  transition: background 0.3s ease;
+  border: 1.5px solid var(--saffron);
 }
 .chip-arch--idle-cream:hover {
-  color: var(--beige);
-}
-.chip-arch--idle-cream:hover::before {
   background: var(--saffron);
+  color: var(--beige);
 }
 .chip-arch:focus-visible {
   outline: 2px solid var(--saffron);
@@ -257,7 +235,7 @@
   line-height: 1;
   cursor: pointer;
   isolation: isolate;
-  clip-path: var(--hex-clip);
+  border-radius: 10px;
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease,
     background-color 0.35s ease, color 0.35s ease;
 }
@@ -271,30 +249,21 @@
 .btn-arch--solid {
   background: var(--saffron);
   color: var(--beige);
+  border: 1.5px solid var(--saffron);
 }
 .btn-arch--solid:hover {
   transform: translateY(-2px);
   filter: brightness(1.08);
 }
 .btn-arch--outline {
-  background: var(--saffron);
+  background: transparent;
   color: var(--saffron);
-}
-.btn-arch--outline::before {
-  content: "";
-  position: absolute;
-  inset: 1.6px;
-  z-index: 1;
-  background: var(--btn-surface);
-  clip-path: inherit;
-  transition: background 0.35s ease;
+  border: 1.5px solid var(--saffron);
 }
 .btn-arch--outline:hover {
   transform: translateY(-2px);
-  color: var(--beige);
-}
-.btn-arch--outline:hover::before {
   background: var(--saffron);
+  color: var(--beige);
 }
 .btn-arch:focus-visible {
   outline: 2px solid var(--saffron);
