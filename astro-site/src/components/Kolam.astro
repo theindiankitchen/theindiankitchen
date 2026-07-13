@@ -1,0 +1,41 @@
+---
+// Reusable kolam (rangoli) ornament. Paints /public/kolam-motif.svg through a
+// CSS mask so a single line-art asset can be tinted any brand colour and set to
+// any size/opacity. Purely decorative (aria-hidden). Placeholder art for now;
+// swap /public/kolam-motif.svg for the final vector without touching this file.
+interface Props {
+  /** Any CSS colour, e.g. "var(--saffron)" (copper) or "var(--olive)". */
+  color?: string;
+  /** CSS length for the square footprint, e.g. "80px", "22rem". */
+  size?: string;
+  /** 0-1. Keep low so it reads as texture, not decoration. */
+  opacity?: number;
+  class?: string;
+}
+const {
+  color = "var(--saffron)",
+  size = "80px",
+  opacity = 0.15,
+  class: className = "",
+} = Astro.props;
+---
+
+<span
+  class:list={["kolam", className]}
+  aria-hidden="true"
+  style={`--kolam-color:${color}; --kolam-size:${size}; --kolam-opacity:${opacity};`}
+></span>
+
+<style>
+  .kolam {
+    display: inline-block;
+    width: var(--kolam-size);
+    height: var(--kolam-size);
+    flex: none;
+    opacity: var(--kolam-opacity);
+    background-color: var(--kolam-color);
+    -webkit-mask: url("/kolam-motif.svg") center / contain no-repeat;
+    mask: url("/kolam-motif.svg") center / contain no-repeat;
+    pointer-events: none;
+  }
+</style>
