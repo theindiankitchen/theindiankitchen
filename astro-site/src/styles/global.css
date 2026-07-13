@@ -162,7 +162,6 @@
 
 /* ---------- Pointed arch chips (category selectors) ---------- */
 @utility chip-arch {
-  --chip-c: 13px;
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -220,8 +219,6 @@
 
 /* ---------- Arch / chamfer buttons (Indian arch motif) ---------- */
 @utility btn-arch {
-  --arch-c: 16px;
-  --btn-surface: var(--olive);
   position: relative;
   display: inline-flex;
   align-items: center;
