@@ -253,8 +253,11 @@
   transform: translateY(-2px);
   filter: brightness(1.08);
 }
+/* Secondary outline button. Fill is a token: transparent by default (reads well
+   on cream/solid sections); set --btn-outline-fill to a dark tone when the
+   button sits over busy imagery so its copper border and text stay legible. */
 .btn-arch--outline {
-  background: transparent;
+  background: var(--btn-outline-fill, transparent);
   color: var(--saffron);
   border: 1.5px solid var(--saffron);
 }
@@ -447,7 +450,7 @@ html.reveal-off .reveal-content {
   font-size: 0.7rem;
   letter-spacing: 0.55em;
   text-transform: uppercase;
-  color: color-mix(in oklab, var(--olive) 62%, transparent);
+  color: color-mix(in oklab, var(--accent-foreground) 62%, transparent);
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
@@ -457,7 +460,7 @@ html.reveal-off .reveal-content {
   content: "";
   width: 1.25rem;
   height: 1px;
-  background: color-mix(in oklab, var(--saffron) 60%, transparent);
+  background: color-mix(in oklab, var(--accent) 60%, transparent);
 }
 
 /* ---------- Small entrance utilities ---------- */

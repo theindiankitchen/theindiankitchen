@@ -7,7 +7,6 @@ import MenuPreview from "../components/MenuPreview.tsx";
 import InstagramGrid from "../components/InstagramGrid.astro";
 import ReviewsCarousel from "../components/ReviewsCarousel.tsx";
 import OrderDelivery from "../components/OrderDelivery.tsx";
-import Kolam from "../components/Kolam.astro";
 
 // ---------------------------------------------------------------------------
 // Delivery storefront links. GOES HERE: replace all three with the real URLs.
@@ -24,52 +23,53 @@ const description =
 ---
 
 <BaseLayout title={title} description={description}>
-  {/* HERO: light parchment base with an Indian-monument silhouette band and the
-      typewriter welcome. No dark restaurant photo. Uses the sticky reveal. */}
-  <section slot="hero" class="reveal-hero flex items-center justify-center text-center">
-    {/* Light parchment base (also the fallback colour if the silhouette is absent). */}
-    <div aria-hidden="true" class="absolute inset-0 bg-cream-pattern"></div>
-
-    {/* MONUMENT SILHOUETTE SVG GOES HERE: user will supply a clean Indian-monuments
-        skyline vector. Placeholder wired here, anchored bottom-center, full width,
-        responsive. The cream base above is the fallback so the hero is never blank. */}
+  {/* HERO: Full screen layout with a dark green background fallback */}
+  <section slot="hero" class="reveal-hero flex items-center justify-center text-center relative overflow-hidden bg-[#121c17] min-h-[85vh] md:min-h-screen w-full">
+    
+    {/* DESKTOP HERO IMAGE */}
     <img
-      src="/monuments-silhouette.svg"
+      src="/hero-home1.png"
       alt=""
       aria-hidden="true"
-      class="pointer-events-none select-none absolute inset-x-0 bottom-0 w-full opacity-90"
+      class="hidden md:block pointer-events-none select-none absolute inset-x-0 bottom-0 w-full h-full object-cover object-bottom opacity-75"
     />
-    {/* Soft cream scrim so text stays legible where it overlaps the silhouette. */}
-    <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-transparent via-[#e1c7ae]/35 to-transparent"></div>
 
-    {/* Kolam corner flourishes framing the wordmark, faint texture. */}
-    <div aria-hidden="true" class="pointer-events-none absolute top-24 left-4 md:left-8">
-      <Kolam color="var(--saffron)" size="clamp(70px, 9vw, 128px)" opacity={0.13} />
-    </div>
-    <div aria-hidden="true" class="pointer-events-none absolute top-24 right-4 md:right-8">
-      <Kolam color="var(--saffron)" size="clamp(70px, 9vw, 128px)" opacity={0.13} />
-    </div>
+    {/* MOBILE HERO IMAGE */}
+    <img
+      src="/hero-home-mobile1.png"
+      alt=""
+      aria-hidden="true"
+      class="block md:hidden pointer-events-none select-none absolute inset-x-0 bottom-0 w-full h-full object-cover object-bottom opacity-95"
+    />
 
-    <div class="container-x relative z-10 flex flex-col items-center pt-24 pb-16">
-      <div class="flex flex-col items-center text-olive select-none w-full max-w-[92vw] md:max-w-[70vw]">
-        <span class="font-serif text-sm sm:text-base md:text-lg tracking-[0.35em] uppercase mb-1 md:mb-2">
+    {/* SUBTLE DARK FILTER - Keeps everything integrated nicely */}
+    <div aria-hidden="true" class="absolute inset-0 bg-black/10 z-10"></div>
+
+    {/* THE PROBLEM CREAM SCRIM LAYER HAS BEEN COMPLETELY REMOVED FROM HERE */}
+
+    <div class="container-x relative z-20 flex flex-col items-center pt-24 pb-16 my-auto">
+      {/* Premium Cream Typography styling */}
+      <div class="flex flex-col items-center text-[#e1c7ae] select-none w-full max-w-[92vw] md:max-w-[70vw] drop-shadow-[0_2px_4px_rgba(0,0,0,0.25)]">
+        <span class="font-serif text-sm sm:text-base md:text-lg tracking-[0.35em] uppercase mb-1 md:mb-2 font-bold">
           THE
         </span>
-        <h1 class="font-serif font-semibold text-[clamp(1.75rem,8.5vw,5.5rem)] leading-[0.95] tracking-[0.1em] uppercase whitespace-nowrap">
+        <h1 class="font-serif font-bold text-[clamp(1.75rem,8.5vw,5.5rem)] leading-[0.95] tracking-[0.1em] uppercase whitespace-nowrap drop-shadow-[0_4px_6px_rgba(0,0,0,0.3)]">
           INDIAN KITCHEN
         </h1>
-        <span class="font-sans font-medium text-xs sm:text-sm md:text-base tracking-[0.32em] uppercase text-saffron mt-4 md:mt-6">
+        <span class="font-sans font-bold text-xs sm:text-sm md:text-base tracking-[0.32em] uppercase text-saffron mt-4 md:mt-6 drop-shadow-[0_2px_3px_rgba(0,0,0,0.3)]">
           BIRYANI &amp; DOSA
         </span>
       </div>
 
-      <WelcomeGreetings client:load />
+      <div class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
+        <WelcomeGreetings client:load />
+      </div>
 
       <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
         <a href="/menu" class="btn-arch btn-arch--solid">
           <span class="btn-arch__label">View Menu</span>
         </a>
-        <a href="/menu#reserve" class="btn-arch btn-arch--outline">
+        <a href="/menu#reserve" class="btn-arch btn-arch--outline" style="--btn-outline-fill: #061508;">
           <span class="btn-arch__label">Reserve a Table</span>
         </a>
       </div>
@@ -79,10 +79,6 @@ const description =
   {/* ABOUT: pattern background, calm premium introduction. */}
   <section id="about" class="bg-cream-pattern text-olive py-24 md:py-32 relative overflow-hidden">
     <div class="container-x text-center max-w-3xl mx-auto relative">
-      {/* Faint kolam watermark behind the heading. */}
-      <div aria-hidden="true" class="pointer-events-none absolute left-1/2 -top-16 -translate-x-1/2 z-0">
-        <Kolam color="var(--saffron)" size="clamp(280px, 44vw, 460px)" opacity={0.07} />
-      </div>
       <div class="relative z-10">
         <span class="text-[11px] uppercase tracking-[0.35em] text-saffron">Our Kitchen</span>
         <h2 class="font-serif text-4xl md:text-6xl mt-4 leading-[1.05]">A taste of India, crafted in Toronto.</h2>
@@ -92,12 +88,6 @@ const description =
           filter coffee the way it is meant to be. Classic recipes, generous hospitality,
           and the warmth of a family table on Yonge Street.
         </p>
-        {/* Kolam section divider between About and the marquee. */}
-        <div aria-hidden="true" class="mt-14 flex items-center justify-center gap-5">
-          <span class="h-px w-16 md:w-24 bg-saffron/40"></span>
-          <Kolam color="var(--saffron)" size="46px" opacity={0.9} />
-          <span class="h-px w-16 md:w-24 bg-saffron/40"></span>
-        </div>
       </div>
     </div>
   </section>

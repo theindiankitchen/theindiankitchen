@@ -90,7 +90,7 @@ export default function WelcomeGreetings() {
         <span className="welcome-caret" aria-hidden="true" />
       </div>
       <span className="welcome-lang">{GREETINGS[index].lang}</span>
-      <p className="mt-5 text-olive/75 italic font-sans text-base md:text-lg tracking-wide">
+      <p className="mt-5 text-cream/75 italic font-sans text-base md:text-lg tracking-wide">
         A taste of India, served with warmth.
       </p>
     </div>
