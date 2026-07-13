@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import Rangoli from "./Rangoli";
 
 // Exact port of the original Lovable "Loved across Toronto" reviews section
 // (src/routes/index.tsx). Three static cream cards, no carousel. Copy verbatim,
@@ -13,7 +14,13 @@ export default function ReviewsCarousel() {
   return (
     <section id="reviews" className="py-24 md:py-32 relative bg-olive overflow-hidden">
       <div className="absolute inset-0 pattern-tile opacity-[0.06] pointer-events-none" />
-      <div className="container-x relative">
+
+      {/* Rangoli accents beside the centered heading (desktop) and a corner (mobile). */}
+      <Rangoli src="/rangoli-4.png" opacity={0.14} className="hidden xl:block top-16 left-0 w-[150px] h-[150px]" />
+      <Rangoli src="/rangoli-3.png" opacity={0.14} className="hidden xl:block top-16 right-0 w-[150px] h-[150px]" />
+      <Rangoli src="/rangoli-1.png" opacity={0.13} className="xl:hidden bottom-4 left-2 w-[100px] h-[100px]" />
+
+      <div className="container-x relative z-10">
         <div className="text-center mb-14">
           <h2 className="font-serif text-4xl md:text-6xl mt-3">Loved across Toronto.</h2>
         </div>

@@ -7,6 +7,7 @@ import MenuPreview from "../components/MenuPreview.tsx";
 import InstagramGrid from "../components/InstagramGrid.astro";
 import ReviewsCarousel from "../components/ReviewsCarousel.tsx";
 import OrderDelivery from "../components/OrderDelivery.tsx";
+import Rangoli from "../components/Rangoli.tsx";
 
 // ---------------------------------------------------------------------------
 // Delivery storefront links. GOES HERE: replace all three with the real URLs.
@@ -36,7 +37,7 @@ const description =
 
     {/* MOBILE HERO IMAGE */}
     <img
-      src="/hero-home-mobile1.png"
+      src="/hero-home-mobile2.png"
       alt=""
       aria-hidden="true"
       class="block md:hidden pointer-events-none select-none absolute inset-x-0 bottom-0 w-full h-full object-cover object-bottom opacity-95"
@@ -69,7 +70,7 @@ const description =
         <a href="/menu" class="btn-arch btn-arch--solid">
           <span class="btn-arch__label">View Menu</span>
         </a>
-        <a href="/menu#reserve" class="btn-arch btn-arch--outline" style="--btn-outline-fill: #061508;">
+        <a href="/menu#reserve" class="btn-arch btn-arch--outline" style="--btn-outline-fill: #22221f;">
           <span class="btn-arch__label">Reserve a Table</span>
         </a>
       </div>
@@ -78,7 +79,12 @@ const description =
 
   {/* ABOUT: pattern background, calm premium introduction. */}
   <section id="about" class="bg-cream-pattern text-olive py-24 md:py-32 relative overflow-hidden">
-    <div class="container-x text-center max-w-3xl mx-auto relative">
+    {/* Rangoli accents in the empty flanks (desktop) and a corner (mobile). */}
+    <Rangoli src="/rangoli-3.png" opacity={0.12} className="hidden xl:block top-1/2 -translate-y-1/2 left-0 2xl:left-10 w-[185px] h-[185px] 2xl:w-[220px] 2xl:h-[220px]" />
+    <Rangoli src="/rangoli-1.png" opacity={0.12} className="hidden xl:block top-1/2 -translate-y-1/2 right-0 2xl:right-10 w-[185px] h-[185px] 2xl:w-[220px] 2xl:h-[220px]" />
+    <Rangoli src="/rangoli-2.png" opacity={0.12} className="xl:hidden bottom-5 left-3 w-[92px] h-[92px]" />
+
+    <div class="container-x text-center max-w-3xl mx-auto relative z-10">
       <div class="relative z-10">
         <span class="text-[11px] uppercase tracking-[0.35em] text-saffron">Our Kitchen</span>
         <h2 class="font-serif text-4xl md:text-6xl mt-4 leading-[1.05]">A taste of India, crafted in Toronto.</h2>

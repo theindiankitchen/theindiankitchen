@@ -1,5 +1,6 @@
 ---
 import Icon from "./Icon.astro";
+import Rangoli from "./Rangoli";
 
 // Curated Instagram section (not a live widget, no external embeds, no API).
 // GOES HERE: replace with the real Instagram profile URL.
@@ -10,8 +11,13 @@ const HANDLE = "@theindiankitchen";
 const REELS = ["/reel2.mp4", "/reel3.mp4", "/reel1.mp4"];
 ---
 
-<section id="instagram" class="pt-24 md:pt-32 pb-14 md:pb-16 bg-cream-pattern text-olive relative">
-  <div class="container-x relative">
+<section id="instagram" class="pt-24 md:pt-32 pb-14 md:pb-16 bg-cream-pattern text-olive relative overflow-hidden">
+  {/* Rangoli accents beside the centered heading (desktop) and a corner (mobile). */}
+  <Rangoli src="/rangoli-2.png" opacity={0.12} className="hidden xl:block top-24 left-0 w-[170px] h-[170px]" />
+  <Rangoli src="/rangoli-1.png" opacity={0.12} className="hidden xl:block top-24 right-0 w-[170px] h-[170px]" />
+  <Rangoli src="/rangoli-4.png" opacity={0.12} className="xl:hidden bottom-3 right-2 w-[96px] h-[96px]" />
+
+  <div class="container-x relative z-10">
     <div class="text-center max-w-2xl mx-auto mb-12">
       <span class="text-[11px] uppercase tracking-[0.35em] text-saffron">On Instagram</span>
       <h2 class="font-serif text-4xl md:text-6xl mt-3 text-olive">Follow our kitchen.</h2>

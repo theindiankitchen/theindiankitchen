@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import Rangoli from "./Rangoli";
 
 type Props = {
   uberUrl: string;
@@ -18,7 +19,13 @@ export default function OrderDelivery({ uberUrl, doordashUrl, pickupUrl }: Props
   return (
     <section id="order" className="py-24 md:py-32 bg-olive text-beige relative overflow-hidden">
       <div className="absolute inset-0 pattern-tile opacity-[0.06] pointer-events-none" />
-      <div className="container-x relative">
+
+      {/* Rangoli accents in the empty flanks (desktop) and a corner (mobile). */}
+      <Rangoli src="/rangoli-1.png" opacity={0.14} className="hidden xl:block top-1/2 -translate-y-1/2 left-0 2xl:left-8 w-[190px] h-[190px] 2xl:w-[230px] 2xl:h-[230px]" />
+      <Rangoli src="/rangoli-2.png" opacity={0.14} className="hidden xl:block top-1/2 -translate-y-1/2 right-0 2xl:right-8 w-[190px] h-[190px] 2xl:w-[230px] 2xl:h-[230px]" />
+      <Rangoli src="/rangoli-3.png" opacity={0.13} className="xl:hidden bottom-4 right-2 w-[104px] h-[104px]" />
+
+      <div className="container-x relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-serif text-4xl md:text-6xl mt-3">Bring The Kitchen home.</h2>
           <p className="mt-5 text-beige/70">Delivery and pickup available across downtown Toronto.</p>
