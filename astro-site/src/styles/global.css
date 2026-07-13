@@ -425,7 +425,8 @@ html.reveal-off .reveal-content {
   font-weight: 500;
   letter-spacing: 0.16em;
   line-height: 1.1;
-  background: linear-gradient(180deg, #f5d58a 0%, var(--saffron) 45%, #b3742a 100%);
+  /* Copper gradient that reads on the light parchment hero. */
+  background: linear-gradient(180deg, #cf8330 0%, var(--saffron) 45%, #7e440b 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -449,7 +450,7 @@ html.reveal-off .reveal-content {
   font-size: 0.7rem;
   letter-spacing: 0.55em;
   text-transform: uppercase;
-  color: color-mix(in oklab, var(--beige) 70%, transparent);
+  color: color-mix(in oklab, var(--olive) 62%, transparent);
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;

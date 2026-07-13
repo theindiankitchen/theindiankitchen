@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  MONUMENT SILHOUETTE SVG GOES HERE.
+  Placeholder Indian-monuments skyline (Taj, temple gopuram, mosque, gateway).
+  The user will supply a clean, final Indian-monuments skyline vector.
+  Two tonal layers for depth: a soft copper haze behind, deep green in front.
+  Full-width band, anchored to the bottom. Recolour by editing the fills, or
+  swap the whole file.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 340" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Indian monuments skyline">
+  <!-- ===== BACK LAYER: distant copper haze ===== -->
+  <g fill="#b36512" opacity="0.20">
+    <rect x="386" y="300" width="88" height="40"/>
+    <path d="M386 300 A44 70 0 0 1 474 300 Z"/>
+    <path d="M425 230 L430 210 L435 230 Z"/>
+    <rect x="505" y="252" width="16" height="88"/>
+    <path d="M505 252 A8 14 0 0 1 521 252 Z"/>
+    <rect x="932" y="300" width="96" height="40"/>
+    <path d="M932 300 A48 74 0 0 1 1028 300 Z"/>
+    <path d="M975 226 L980 204 L985 226 Z"/>
+    <rect x="1030" y="250" width="16" height="90"/>
+    <path d="M1030 250 A8 14 0 0 1 1046 250 Z"/>
+  </g>
+
+  <!-- ===== FRONT LAYER: deep heritage green ===== -->
+  <g fill="#0b1f0c">
+    <!-- far-left stupa -->
+    <rect x="66" y="300" width="48" height="40"/>
+    <path d="M56 300 A34 42 0 0 1 124 300 Z"/>
+    <path d="M86 258 L90 240 L94 258 Z"/>
+
+    <!-- left temple gopuram -->
+    <rect x="150" y="270" width="40" height="70"/>
+    <path d="M148 270 A22 26 0 0 1 192 270 Z"/>
+    <path d="M180 340 L200 200 L300 200 L320 340 Z"/>
+    <path d="M205 200 L215 168 L285 168 L295 200 Z"/>
+    <path d="M228 168 A22 24 0 0 1 272 168 Z"/>
+    <path d="M247 144 L250 126 L253 144 Z"/>
+
+    <!-- central Taj -->
+    <rect x="560" y="210" width="18" height="130"/>
+    <path d="M560 210 A12 18 0 0 1 578 210 Z"/>
+    <path d="M566 192 L569 176 L572 192 Z"/>
+    <rect x="600" y="176" width="22" height="164"/>
+    <path d="M600 176 A14 22 0 0 1 622 176 Z"/>
+    <path d="M608 154 L611 138 L614 154 Z"/>
+    <rect x="632" y="252" width="176" height="88"/>
+    <rect x="650" y="214" width="20" height="38"/>
+    <path d="M638 214 A22 34 0 0 1 682 214 Z"/>
+    <rect x="770" y="214" width="20" height="38"/>
+    <path d="M758 214 A22 34 0 0 1 802 214 Z"/>
+    <rect x="686" y="238" width="68" height="16"/>
+    <path d="M646 238 A74 118 0 0 1 794 238 Z"/>
+    <path d="M713 120 L720 96 L727 120 Z"/>
+    <rect x="818" y="176" width="22" height="164"/>
+    <path d="M818 176 A14 22 0 0 1 840 176 Z"/>
+    <path d="M826 154 L829 138 L832 154 Z"/>
+    <rect x="862" y="210" width="18" height="130"/>
+    <path d="M862 210 A12 18 0 0 1 880 210 Z"/>
+    <path d="M868 192 L871 176 L874 192 Z"/>
+
+    <!-- right mosque -->
+    <rect x="1070" y="262" width="140" height="78"/>
+    <rect x="1068" y="262" width="40" height="0"/>
+    <path d="M1068 262 A20 28 0 0 1 1108 262 Z"/>
+    <path d="M1172 262 A20 28 0 0 1 1212 262 Z"/>
+    <path d="M1082 262 A58 92 0 0 1 1198 262 Z"/>
+    <path d="M1134 170 L1140 146 L1146 170 Z"/>
+    <rect x="1216" y="192" width="20" height="148"/>
+    <path d="M1216 192 A13 20 0 0 1 1236 192 Z"/>
+    <path d="M1223 172 L1226 156 L1229 172 Z"/>
+
+    <!-- far-right gateway -->
+    <path d="M1296 340 L1296 240 Q1341 205 1386 240 L1386 340 L1364 340 L1364 262 Q1341 238 1318 262 L1318 340 Z"/>
+  </g>
+</svg>

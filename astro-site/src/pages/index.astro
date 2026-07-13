@@ -23,14 +23,26 @@ const description =
 ---
 
 <BaseLayout title={title} description={description}>
-  {/* HERO: dark image background with typewriter welcome. Uses the sticky reveal. */}
+  {/* HERO: light parchment base with an Indian-monument silhouette band and the
+      typewriter welcome. No dark restaurant photo. Uses the sticky reveal. */}
   <section slot="hero" class="reveal-hero flex items-center justify-center text-center">
-    {/* IMAGE GOES HERE: dark hero background, swap after the photoshoot. */}
-    <img src="/assets/hero-interior.jpg" alt="" aria-hidden="true" class="absolute inset-0 size-full object-cover" />
-    <div aria-hidden="true" class="img-overlay"></div>
+    {/* Light parchment base (also the fallback colour if the silhouette is absent). */}
+    <div aria-hidden="true" class="absolute inset-0 bg-cream-pattern"></div>
+
+    {/* MONUMENT SILHOUETTE SVG GOES HERE: user will supply a clean Indian-monuments
+        skyline vector. Placeholder wired here, anchored bottom-center, full width,
+        responsive. The cream base above is the fallback so the hero is never blank. */}
+    <img
+      src="/monuments-silhouette.svg"
+      alt=""
+      aria-hidden="true"
+      class="pointer-events-none select-none absolute inset-x-0 bottom-0 w-full opacity-90"
+    />
+    {/* Soft cream scrim so text stays legible where it overlaps the silhouette. */}
+    <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-transparent via-[#e1c7ae]/35 to-transparent"></div>
 
     <div class="container-x relative z-10 flex flex-col items-center pt-24 pb-16">
-      <div class="flex flex-col items-center text-beige select-none w-full max-w-[92vw] md:max-w-[70vw]">
+      <div class="flex flex-col items-center text-olive select-none w-full max-w-[92vw] md:max-w-[70vw]">
         <span class="font-serif text-sm sm:text-base md:text-lg tracking-[0.35em] uppercase mb-1 md:mb-2">
           THE
         </span>
@@ -48,7 +60,7 @@ const description =
         <a href="/menu" class="btn-arch btn-arch--solid">
           <span class="btn-arch__label">View Menu</span>
         </a>
-        <a href="/menu#reserve" class="btn-arch btn-arch--outline" style="--btn-surface: #061508;">
+        <a href="/menu#reserve" class="btn-arch btn-arch--outline">
           <span class="btn-arch__label">Reserve a Table</span>
         </a>
       </div>
