@@ -20,8 +20,9 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-ring: var(--ring);
-  /* Brand pairing. Swap --font-display / --font-body to change site wide. */
-  --font-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  /* Brand pairing. Swap --font-display / --font-body to change site wide.
+     Cinzel matches the engraved Roman-caps "THE INDIAN KITCHEN" wordmark. */
+  --font-display: "Cinzel", "Cormorant Garamond", Georgia, serif;
   --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
   /* Existing components use font-serif / font-sans; alias them to the pair. */
   --font-serif: var(--font-display);

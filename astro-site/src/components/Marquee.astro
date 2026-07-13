@@ -1,7 +1,6 @@
 ---
-// Prata (latin, weight 400) is loaded only where the marquee is used, and is
-// applied only inside the marquee (a distinct luxurious display serif).
-import "@fontsource/prata/latin-400.css";
+// Marquee uses the brand display font (Cinzel), loaded globally in BaseLayout,
+// so the whole site reads as one voice. Only the font family changed here.
 
 // Brewed-style marquee: two rows scrolling in opposite directions, seamless
 // loop. Top row solid cream, bottom row copper outline. A copper period sits
@@ -87,14 +86,14 @@ const ROW_B = [
   }
   .marquee__name,
   .marquee__dot {
-    font-family: "Prata", Georgia, serif;
-    font-weight: 400;
+    font-family: "Cinzel", Georgia, serif;
+    font-weight: 500;
     font-size: clamp(1.9rem, 4vw, 5.5rem);
     line-height: 1.1;
   }
   .marquee__name {
-    /* Prata runs wide, a touch of negative tracking keeps it tight. */
-    letter-spacing: -0.01em;
+    /* Cinzel is a caps titling face; a touch of tracking keeps it even. */
+    letter-spacing: 0.01em;
   }
   /* Period sits tight after the last letter, on the baseline, always solid copper. */
   .marquee__dot {
