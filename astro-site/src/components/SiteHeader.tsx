@@ -6,7 +6,7 @@ import { Menu, X } from "lucide-react";
 const officialLogo = "/assets/official-logo.png";
 
 const NAV = [
-  { label: "Menu", href: "/menu" },
+  { label: "Menu", href: "/#menu" },
   { label: "Catering", href: "/catering" },
   { label: "Contact Us", href: "/contact" },
 ];

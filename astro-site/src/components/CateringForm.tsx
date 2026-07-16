@@ -85,7 +85,7 @@ export default function CateringForm() {
       {success && <SuccessModal onClose={() => setSuccess(false)} />}
 
       {/* Framed off-white panel with a copper double border, matching reservation. */}
-      <div className="relative rounded-[1.5rem] border border-saffron/50 p-2.5 bg-[#f4ece0] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.35)]">
+      <div className="relative rounded-[1.5rem] border border-saffron/50 p-2.5 bg-[#0B1F0C] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.35)]">
         <div className="rounded-[1.15rem] border border-saffron/30 p-6 md:p-8">
           <form onSubmit={onSubmit}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -102,7 +102,7 @@ export default function CateringForm() {
             </div>
 
             <div className="mt-5">
-              <label htmlFor="notes" className="block text-[11px] uppercase tracking-[0.12em] mb-2 font-medium text-[#0b1f0c]">
+              <label htmlFor="notes" className="block text-[11px] uppercase tracking-[0.12em] mb-2 font-medium text-[#e1c7ae]">
                 Additional Instructions / Special Requests
               </label>
               <textarea
@@ -115,7 +115,7 @@ export default function CateringForm() {
             </div>
 
             <div className="mt-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <p className="text-xs text-[#0b1f0c]/60 max-w-xs">
+              <p className="text-xs text-[#e1c7ae]/60 max-w-xs">
                 By submitting, you agree to be contacted regarding your catering request.
               </p>
               <button type="submit" disabled={submitting} className="btn-arch btn-arch--solid disabled:opacity-60 disabled:cursor-not-allowed">
@@ -149,7 +149,7 @@ type FieldProps = React.InputHTMLAttributes<HTMLInputElement> & { label: string 
 function Field({ label, name, className, ...rest }: FieldProps) {
   return (
     <div>
-      <label htmlFor={name} className="block text-[11px] uppercase tracking-[0.12em] mb-2 font-medium text-[#0b1f0c]">
+      <label htmlFor={name} className="block text-[11px] uppercase tracking-[0.12em] mb-2 font-medium text-[#e1c7ae]">
         {label}
       </label>
       <input
@@ -168,7 +168,7 @@ function Field({ label, name, className, ...rest }: FieldProps) {
 function SelectField({ label, name, options, required }: { label: string; name: string; options: string[]; required?: boolean }) {
   return (
     <div>
-      <label htmlFor={name} className="block text-[11px] uppercase tracking-[0.12em] mb-2 font-medium text-[#0b1f0c]">
+      <label htmlFor={name} className="block text-[11px] uppercase tracking-[0.12em] mb-2 font-medium text-[#e1c7ae]">
         {label}
       </label>
       <div className="relative">

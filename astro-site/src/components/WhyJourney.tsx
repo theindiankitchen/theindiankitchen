@@ -90,19 +90,11 @@ export default function WhyJourney() {
   return (
     <section
       ref={sectionRef}
-      className={`relative text-beige overflow-hidden bg-matte ${
+      className={`relative text-beige overflow-hidden ${
         mode === "pin" ? "h-screen py-0" : "py-24 md:py-32"
       }`}
+      style={{ backgroundColor: "var(--olive)" }}
     >
-      {/* Fixed background layer: Size updated to custom 700px mapping */}
-      <div 
-        className="absolute inset-0 bg-repeat pointer-events-none z-0"
-        style={{ 
-          backgroundImage: `url('/green-bg.png')`, 
-          backgroundSize: '700px' 
-        }}
-      />
-
       {/* Replaced absolute vertical layout centering with top padding to push down content cleanly */}
       <div className={`relative z-10 w-full h-full flex flex-col ${mode === "pin" ? "pt-14 md:pt-20" : ""}`}>
         <div className="container-x">

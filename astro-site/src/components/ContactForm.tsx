@@ -63,7 +63,7 @@ export default function ContactForm() {
   return (
     <>
       {success && <SuccessModal onClose={() => setSuccess(false)} />}
-      <div className="relative rounded-[1.5rem] border border-saffron/50 p-2.5 bg-[#f4ece0] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.35)]">
+      <div className="relative rounded-[1.5rem] border border-saffron/50 p-2.5 bg-[#0B1F0C] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.35)]">
         <div className="rounded-[1.15rem] border border-saffron/30 p-6 md:p-8">
       <form onSubmit={onSubmit}>
         <div className="grid grid-cols-1 gap-5">
@@ -71,7 +71,7 @@ export default function ContactForm() {
           <Field type="email" label="Email Address" name="email" placeholder="you@example.com" required />
           <Field type="tel" label="Phone Number" name="phone" placeholder="(416) 555-0199" />
           <div>
-            <label htmlFor="message" className="block text-[11px] uppercase tracking-[0.12em] mb-2 font-medium text-[#0b1f0c]">
+            <label htmlFor="message" className="block text-[11px] uppercase tracking-[0.12em] mb-2 font-medium text-[#e1c7ae]">
               Message
             </label>
             <textarea
@@ -117,7 +117,7 @@ type FieldProps = React.InputHTMLAttributes<HTMLInputElement> & { label: string 
 function Field({ label, name, className, ...rest }: FieldProps) {
   return (
     <div>
-      <label htmlFor={name} className="block text-[11px] uppercase tracking-[0.12em] mb-2 font-medium text-[#0b1f0c]">
+      <label htmlFor={name} className="block text-[11px] uppercase tracking-[0.12em] mb-2 font-medium text-[#e1c7ae]">
         {label}
       </label>
       <input

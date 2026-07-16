@@ -1,27 +1,17 @@
 ---
 import Icon from "./Icon.astro";
-import Kolam from "./Kolam.astro";
 
 // GOES HERE: swap official-logo.png after the final brand art is ready.
 const officialLogo = "/assets/official-logo.png";
 
 const NAV = [
-  { label: "Menu", href: "/menu" },
+  { label: "Menu", href: "/#menu" },
   { label: "Catering", href: "/catering" },
   { label: "Contact", href: "/contact" },
 ];
 ---
 
 <footer class="site-footer text-beige relative overflow-hidden">
-  {/* Kolam corner flourishes, faint texture framing the wordmark. Kept below the
-      very top edge so the scroll-reveal seam never clips them. */}
-  <div aria-hidden="true" class="pointer-events-none absolute top-16 left-4 md:top-16 md:left-10">
-    <Kolam color="var(--saffron)" size="110px" opacity={0.12} />
-  </div>
-  <div aria-hidden="true" class="pointer-events-none absolute top-16 right-4 md:top-16 md:right-10">
-    <Kolam color="var(--saffron)" size="110px" opacity={0.12} />
-  </div>
-
   <div class="container-x py-14 md:py-12 text-center flex flex-col items-center relative">
     {/* IMAGE GOES HERE: footer wordmark, swap official-logo.png after final art. */}
     <a href="/" aria-label="The Indian Kitchen, home" class="inline-block">

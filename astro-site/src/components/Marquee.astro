@@ -23,7 +23,7 @@ const ROW_B = [
 ];
 ---
 
-<section class="marquee-band relative bg-olive border-y border-saffron/15 overflow-hidden py-[60px] md:py-[100px]" aria-label="A taste of our menu">
+<section class="marquee-band relative bg-olive border-y border-saffron/15 overflow-hidden py-[16px] flex flex-col justify-center gap-[16px]" aria-label="A taste of our menu">
   <div class="marquee marquee--left marquee--solid">
     <ul class="marquee__group">
       {ROW_A.map((name) => (
@@ -37,7 +37,7 @@ const ROW_B = [
     </ul>
   </div>
 
-  <div class="marquee marquee--right marquee--outline mt-8 md:mt-14">
+  <div class="marquee marquee--right marquee--outline">
     <ul class="marquee__group">
       {ROW_B.map((name) => (
         <li class="marquee__item"><span class="marquee__name">{name}</span><span class="marquee__dot" aria-hidden="true">.</span></li>
@@ -88,7 +88,7 @@ const ROW_B = [
   .marquee__dot {
     font-family: "Cinzel", Georgia, serif;
     font-weight: 500;
-    font-size: clamp(1.9rem, 4vw, 5.5rem);
+    font-size: clamp(1.3rem, 3vw, 4rem);
     line-height: 1.1;
   }
   .marquee__name {

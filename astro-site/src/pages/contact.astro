@@ -11,10 +11,25 @@ const INSTAGRAM_URL = "https://www.instagram.com/theindiankitchen.ca"; // PLACEH
 ---
 
 <BaseLayout title={title} description={description}>
-  {/* HERO: image background with the sticky reveal. */}
-  <section slot="hero" class="reveal-hero flex items-center justify-center text-center">
-    {/* IMAGE GOES HERE: contact hero background, swap after the photoshoot. */}
-    <img src="/assets/hero-interior.jpg" alt="" aria-hidden="true" class="absolute inset-0 size-full object-cover" />
+  {/* HERO: responsive image background with the sticky reveal. */}
+  <section slot="hero" class="reveal-hero flex items-center justify-center text-center relative overflow-hidden">
+    
+    {/* DESKTOP HERO IMAGE */}
+    <img 
+      src="/hero-home1.png" 
+      alt="" 
+      aria-hidden="true" 
+      class="hidden md:block absolute inset-0 size-full object-cover object-center" 
+    />
+
+    {/* MOBILE HERO IMAGE: Swaps out on small viewports to prevent unwanted cropping */}
+    <img 
+      src="/hero-home-mobile2.png" 
+      alt="" 
+      aria-hidden="true" 
+      class="block md:hidden absolute inset-0 size-full object-cover object-center" 
+    />
+
     <div aria-hidden="true" class="img-overlay"></div>
 
     <div class="container-x relative z-10 max-w-3xl pt-24">
@@ -48,7 +63,6 @@ const INSTAGRAM_URL = "https://www.instagram.com/theindiankitchen.ca"; // PLACEH
   </section>
 
   {/* PARALLAX BAND */}
-  {/* IMAGE GOES HERE: full width parallax band image, swap after the photoshoot. */}
   <section
     aria-label="The Indian Kitchen"
     class="relative h-[55vh] md:h-[70vh] bg-matte"
@@ -65,7 +79,6 @@ const INSTAGRAM_URL = "https://www.instagram.com/theindiankitchen.ca"; // PLACEH
   <section class="py-24 md:py-32 bg-cream-pattern text-olive">
     <div class="container-x grid md:grid-cols-2 gap-10 md:gap-14 items-center">
       <div class="relative aspect-[4/3] overflow-hidden rounded-[1.6rem] ring-1 ring-saffron/25">
-        {/* IMAGE GOES HERE: swap this closing photo after the shoot. */}
         <img src="/assets/south-indian.jpg" alt="A South Indian spread at The Indian Kitchen" class="size-full object-cover" />
       </div>
       <div class="text-center md:text-left">

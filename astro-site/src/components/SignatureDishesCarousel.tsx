@@ -88,7 +88,7 @@ export default function SignatureDishesCarousel() {
             <article
               key={dish.name}
               data-card
-              className="group relative shrink-0 snap-center sm:snap-start w-[80vw] sm:w-[52vw] md:w-[340px] lg:w-[320px] rounded-[1.4rem] overflow-hidden bg-matte ring-1 ring-saffron/15 shadow-[0_24px_60px_-32px_rgba(0,0,0,0.7)] transition-all duration-500 hover:ring-saffron/40 hover:-translate-y-1"
+              className="group relative shrink-0 snap-center sm:snap-start w-[80vw] sm:w-[52vw] md:w-[340px] lg:w-[320px] rounded-[1.4rem] overflow-hidden bg-olive ring-1 ring-saffron/15 shadow-[0_24px_60px_-32px_rgba(0,0,0,0.7)] transition-all duration-500 hover:ring-saffron/40 hover:-translate-y-1"
             >
               {/* IMAGE GOES HERE: swap this dish photo after the shoot. */}
               <div className="relative aspect-[4/5] overflow-hidden">
