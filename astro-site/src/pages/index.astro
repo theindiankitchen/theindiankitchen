@@ -9,13 +9,11 @@ import ReviewsCarousel from "../components/ReviewsCarousel.tsx";
 import OrderDelivery from "../components/OrderDelivery.tsx";
 
 // ---------------------------------------------------------------------------
-// Delivery storefront links. GOES HERE: replace all three with the real URLs.
-// Uber Eats and DoorDash open in a new tab. PICKUP_URL is a placeholder that
-// may become a phone number (tel:) or an online ordering link later.
+// Delivery storefront links. Uber Eats and DoorDash open in a new tab.
 // ---------------------------------------------------------------------------
-const UBER_EATS_URL = "#"; // PLACEHOLDER
-const DOORDASH_URL = "#"; // PLACEHOLDER
-const PICKUP_URL = "#"; // PLACEHOLDER
+const UBER_EATS_URL = "#";
+const DOORDASH_URL = "#";
+const PICKUP_URL = "#";
 
 const title = "The Indian Kitchen, Biryani and Dosa | Toronto";
 const description =
@@ -24,14 +22,14 @@ const description =
 
 <BaseLayout title={title} description={description}>
   {/* HERO: Full screen layout with a dark green background fallback */}
-  <section slot="hero" class="reveal-hero flex items-center justify-center text-center relative overflow-hidden bg-[#121c17] min-h-[85vh] md:min-h-screen w-full">
+  <section slot="hero" class="reveal-hero hero-tint flex items-center justify-center text-center relative overflow-hidden min-h-[85vh] md:min-h-screen w-full">
     
     {/* DESKTOP HERO IMAGE */}
     <img
       src="/hero-home3.png"
       alt=""
       aria-hidden="true"
-      class="hidden md:block pointer-events-none select-none absolute inset-x-0 bottom-0 w-full h-full object-cover object-bottom opacity-75"
+      class="hidden md:block pointer-events-none select-none absolute inset-x-0 bottom-0 w-full h-full object-cover object-bottom"
     />
 
     {/* MOBILE HERO IMAGE */}
@@ -39,21 +37,22 @@ const description =
       src="/hero-home-mobile2.png"
       alt=""
       aria-hidden="true"
-      class="block md:hidden pointer-events-none select-none absolute inset-x-0 bottom-0 w-full h-full object-cover object-bottom opacity-95"
+      class="block md:hidden pointer-events-none select-none absolute inset-x-0 bottom-0 w-full h-full object-cover object-bottom"
     />
 
     {/* SUBTLE DARK FILTER - Keeps everything integrated nicely */}
-    <div aria-hidden="true" class="absolute inset-0 bg-black/10 z-10"></div>
 
     {/* THE PROBLEM CREAM SCRIM LAYER HAS BEEN COMPLETELY REMOVED FROM HERE */}
 
     <div class="container-x relative z-20 flex flex-col items-center pt-24 pb-16 my-auto">
       {/* Premium Cream Typography styling */}
       <div class="flex flex-col items-center text-[#e1c7ae] select-none w-full max-w-[92vw] md:max-w-[70vw] drop-shadow-[0_2px_4px_rgba(0,0,0,0.25)]">
-        <span class="font-serif text-sm sm:text-base md:text-lg tracking-[0.35em] uppercase mb-1 md:mb-2 font-bold">
+        {/* "THE" + "INDIAN KITCHEN" are the brand wordmark, the only live text
+            on the site set in Cinzel. Everything else is Montserrat. */}
+        <span class="font-wordmark text-sm sm:text-base md:text-lg tracking-[0.35em] uppercase mb-1 md:mb-2 font-bold">
           THE
         </span>
-        <h1 class="font-serif font-bold text-[clamp(1.75rem,8.5vw,5.5rem)] leading-[0.95] tracking-[0.1em] uppercase whitespace-nowrap drop-shadow-[0_4px_6px_rgba(0,0,0,0.3)]">
+        <h1 class="font-wordmark font-bold text-[clamp(1.75rem,8.5vw,5.5rem)] leading-[0.95] tracking-[0.1em] uppercase whitespace-nowrap drop-shadow-[0_4px_6px_rgba(0,0,0,0.3)]">
           INDIAN KITCHEN
         </h1>
         <span class="font-sans font-bold text-xs sm:text-sm md:text-base tracking-[0.32em] uppercase text-saffron mt-4 md:mt-6 drop-shadow-[0_2px_3px_rgba(0,0,0,0.3)]">

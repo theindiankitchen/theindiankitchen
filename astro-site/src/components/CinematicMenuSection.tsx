@@ -1,21 +1,15 @@
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight, Flame, Leaf, Drumstick, Star } from "lucide-react";
+import type { MenuItem } from "../data/menu";
 
-export type MenuItem = {
-  name: string;
-  desc: string;
-  price: string;
-  spice?: 0 | 1 | 2 | 3;
-  veg?: boolean;
-  image?: string;
-  popular?: boolean;
-  featured?: boolean;
-};
+export type { MenuItem };
 
 export type MenuSectionProps = {
   id: string;
   kicker: string;
   title: string;
+  /** Printed section subtitle, e.g. "Non-Veg, Bone In". */
+  subtitle?: string;
   intro?: string;
   items: MenuItem[];
   /** Alternating section background down the menu page. */
@@ -51,6 +45,30 @@ function VegBadge({ veg }: { veg?: boolean }) {
   );
 }
 
+// Price shapes: dual portion (For 1 / For 3), variant list, or single price.
+function PriceTag({ item }: { item: MenuItem }) {
+  if (item.priceFor1 && item.priceFor3) {
+    return (
+      <div className="text-right leading-tight shrink-0">
+        <div className="price text-sm md:text-base whitespace-nowrap">For 1 ${item.priceFor1}</div>
+        <div className="price text-sm md:text-base whitespace-nowrap">For 3 ${item.priceFor3}</div>
+      </div>
+    );
+  }
+  if (item.variants && item.variants.length > 0) {
+    return (
+      <div className="text-right leading-tight shrink-0 space-y-0.5">
+        {item.variants.map((v) => (
+          <div key={v.name} className="price text-sm whitespace-nowrap">
+            {v.name} ${v.price}
+          </div>
+        ))}
+      </div>
+    );
+  }
+  return <span className="price text-lg leading-none shrink-0">${item.price}</span>;
+}
+
 // Circular edge arrow with its own dark pill so it reads on any background.
 function EdgeArrow({ dir, onClick, label }: { dir: 1 | -1; onClick: () => void; label: string }) {
   const side = dir === -1 ? "left-2 md:left-4" : "right-2 md:right-4";
@@ -66,7 +84,7 @@ function EdgeArrow({ dir, onClick, label }: { dir: 1 | -1; onClick: () => void; 
   );
 }
 
-export default function CinematicMenuSection({ id, kicker, title, intro, items, variant = "green" }: MenuSectionProps) {
+export default function CinematicMenuSection({ id, kicker, title, subtitle, intro, items, variant = "green" }: MenuSectionProps) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const cream = variant === "cream";
 
@@ -89,6 +107,11 @@ export default function CinematicMenuSection({ id, kicker, title, intro, items, 
           <h2 className={`font-serif text-4xl md:text-6xl mt-3 leading-[1.05] ${cream ? "text-olive" : "text-beige"}`}>
             {title}
           </h2>
+          {subtitle && (
+            <span className={`mt-3 inline-block text-[11px] uppercase tracking-[0.28em] ${cream ? "text-olive/60" : "text-beige/55"}`}>
+              {subtitle}
+            </span>
+          )}
           {intro && (
             <p className={`mt-5 text-base md:text-lg leading-relaxed ${cream ? "text-olive/70" : "text-beige/65"}`}>
               {intro}
@@ -122,12 +145,12 @@ export default function CinematicMenuSection({ id, kicker, title, intro, items, 
                     className="size-full object-cover will-change-transform [transform:translateZ(0)] transition-transform duration-500 ease-out group-hover:scale-[1.06]"
                   />
                 ) : (
-                  <div className="size-full bg-gradient-to-b from-olive to-matte" />
+                  <div className="size-full bg-linear-to-b from-olive to-matte" />
                 )}
                 <div className="absolute top-3 left-3 right-3 flex items-start justify-between gap-2">
                   <VegBadge veg={item.veg} />
-                  <div className="flex items-center gap-2">
-                    {item.featured && (
+                  <div className="flex flex-col items-end gap-2">
+                    {item.chefsPick && (
                       <span className="text-[10px] uppercase tracking-[0.22em] text-saffron bg-matte/80 backdrop-blur-sm border border-saffron/50 rounded-full px-2.5 py-1">
                         Chef's Pick
                       </span>
@@ -137,18 +160,26 @@ export default function CinematicMenuSection({ id, kicker, title, intro, items, 
                         <Star className="size-3 fill-saffron" /> Popular
                       </span>
                     )}
+                    {item.availability && (
+                      <span className="text-[10px] uppercase tracking-[0.2em] text-beige bg-matte/80 backdrop-blur-sm border border-beige/40 rounded-full px-2.5 py-1">
+                        {item.availability}
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>
 
               {/* Text below the image. */}
               <div className="p-5">
-                <div className="flex items-center justify-between gap-3">
+                <div className="flex items-start justify-between gap-3">
                   <SpiceMeter level={item.spice ?? 0} />
-                  <span className="price text-lg leading-none">${item.price}</span>
+                  <PriceTag item={item} />
                 </div>
                 <h3 className="font-serif text-xl md:text-2xl mt-3 text-beige leading-tight">{item.name}</h3>
                 <p className="mt-2 text-sm text-beige/60 leading-relaxed line-clamp-2">{item.desc}</p>
+                {item.options && item.options.length > 0 && (
+                  <p className="mt-2 text-xs text-beige/45">Choose: {item.options.join(" / ")}</p>
+                )}
               </div>
             </article>
           ))}

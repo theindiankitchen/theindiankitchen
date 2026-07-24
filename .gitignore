@@ -16,6 +16,11 @@ dist-ssr
 .nitro
 *.local
 
+# Environment files and secrets (never commit these)
+.env
+.env.*
+!.env.example
+
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars
@@ -23,6 +28,7 @@ dist-ssr
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.json
 .idea
 .DS_Store
 *.suo
@@ -35,3 +41,6 @@ dist-ssr
 .astro/
 .vite/
 astro-site/.astro/
+
+# Hero recolour backups (scripts/recolour-hero)
+*.png.bak

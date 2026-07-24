@@ -2,11 +2,9 @@
 import Icon from "./Icon.astro";
 
 // Curated Instagram section (not a live widget, no external embeds, no API).
-// GOES HERE: replace with the real Instagram profile URL.
-const INSTAGRAM_URL = "https://www.instagram.com/theindiankitchen.ca"; // PLACEHOLDER
+const INSTAGRAM_URL = "https://www.instagram.com/theindiankitchen.ca";
 const HANDLE = "@theindiankitchen";
 
-// GOES HERE: drop the real reels at /public/videos/insta-1..3.mp4.
 const REELS = ["/reel2.mp4", "/reel3.mp4", "/reel1.mp4"];
 ---
 
@@ -31,7 +29,6 @@ const REELS = ["/reel2.mp4", "/reel3.mp4", "/reel1.mp4"];
     <div class="flex gap-4 md:gap-6 overflow-x-auto sm:grid sm:grid-cols-3 sm:overflow-visible max-w-4xl mx-auto pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
       {REELS.map((src) => (
         <div class="shrink-0 w-[68vw] sm:w-auto aspect-[9/16] overflow-hidden rounded-[1.4rem] ring-1 ring-saffron/25 shadow-[0_24px_60px_-32px_rgba(0,0,0,0.5)] bg-matte">
-          {/* VIDEO GOES HERE: swap with the real reel mp4. */}
           <video class="size-full object-cover" src={src} muted autoplay loop playsinline preload="none"></video>
         </div>
       ))}

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 // Logo lives in /public/assets so it resolves from React islands.
-// IMAGE GOES HERE: swap official-logo.png after the photoshoot / final brand art.
 const officialLogo = "/assets/official-logo.png";
 
 const NAV = [
@@ -30,7 +29,7 @@ export default function SiteHeader() {
       {/* Masking band, hides content scrolling beneath the header */}
       <div
         aria-hidden="true"
-        className="fixed top-0 left-0 right-0 h-20 md:h-32 z-40 bg-[#0b1f0c] pointer-events-none"
+        className="fixed top-0 left-0 right-0 h-20 md:h-32 z-40 bg-olive pointer-events-none"
       />
 
       {/* Logo, upper-left, primary brand anchor */}
@@ -47,8 +46,7 @@ export default function SiteHeader() {
       </a>
 
       {/* Floating navigation island, right side (desktop) or hamburger (mobile) */}
-      <header className="fixed top-3 md:top-9 right-4 md:right-10 lg:right-14 z-50 w-auto rounded-full bg-[#0b1f0c]/95 text-[#e1c7ae] backdrop-blur-md">
-        <div aria-hidden="true" className="absolute inset-0 pattern-tile opacity-[0.06] pointer-events-none rounded-full overflow-hidden" />
+      <header className="fixed top-3 md:top-9 right-4 md:right-10 lg:right-14 z-50 w-auto rounded-full bg-olive text-[#e1c7ae]">
         <div className="relative flex items-center justify-center h-12 md:h-16 px-3 md:px-5">
           <nav className="hidden md:flex items-center gap-6 md:gap-7 text-sm">
             {NAV.map((n) => (
@@ -75,14 +73,13 @@ export default function SiteHeader() {
 
       {/* Mobile full-screen menu overlay */}
       <div
-        className={`md:hidden fixed inset-0 z-[60] bg-[#0b1f0c] transition-opacity duration-300 ${
+        className={`md:hidden fixed inset-0 z-[60] bg-olive transition-opacity duration-300 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         role="dialog"
         aria-modal="true"
         aria-hidden={!open}
       >
-        <div aria-hidden="true" className="absolute inset-0 pattern-tile opacity-[0.06] pointer-events-none" />
         <div className="relative flex items-center justify-between px-4 h-20">
           <img
             src={officialLogo}

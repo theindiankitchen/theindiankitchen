@@ -1,0 +1,10 @@
+{
+  "//": "Tailwind v4 uses CSS-first config (@theme, @utility, @custom-variant, @apply). The built-in CSS language server does not know these at-rules, so tell it to ignore unknown at-rules and let the Tailwind IntelliSense extension validate instead.",
+  "css.lint.unknownAtRules": "ignore",
+  "scss.lint.unknownAtRules": "ignore",
+  "less.lint.unknownAtRules": "ignore",
+  "tailwindCSS.experimental.configFile": "astro-site/src/styles/global.css",
+  "files.associations": {
+    "*.css": "css"
+  }
+}

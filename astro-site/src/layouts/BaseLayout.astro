@@ -16,8 +16,7 @@ const site = Astro.site ?? new URL("https://www.theindiankitchen.ca");
 const canonical = new URL(Astro.url.pathname, site).href;
 const ogImageAbsolute = new URL(ogImage, site).href;
 
-// Restaurant structured data. Values marked PLACEHOLDER should be confirmed with
-// the client before launch. Present tense, the restaurant is open.
+// Restaurant structured data. Present tense, the restaurant is open.
 const restaurantJsonLd = {
   "@context": "https://schema.org",
   "@type": "Restaurant",
@@ -77,13 +76,15 @@ const restaurantJsonLd = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageAbsolute} />
 
-    <!-- Fonts: Cinzel (brand display/heading wordmark font) and Inter (body/UI).
-         Cinzel is the engraved Roman-caps face that matches the logo wordmark. -->
+    <!-- Fonts: Montserrat carries the whole site (400 body, 500 headings/nav/UI,
+         700 wordmark). Cinzel 700 is loaded solely for the hero "The Indian
+         Kitchen" wordmark. Keep these weights in sync with the ones actually
+         used, an unloaded weight gets faux-bolded by the browser. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;500;700&display=swap"
     />
 
     <script

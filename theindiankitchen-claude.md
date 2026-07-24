@@ -26,8 +26,12 @@ Palette, strict, nothing outside this, and no darkened or near-black variants be
 - white and off-white for crisp contrast only
 
 Fonts, keep these, do not swap:
-- Cormorant Garamond, serif, for headings
-- Inter, sans, for body and UI
+- Montserrat, sans, for everything: headings, body, nav, marquee, prices, forms
+- Cinzel, serif, for the "The Indian Kitchen" wordmark only, nothing else
+
+Set via `--font-display` / `--font-body` (both Montserrat) and `--font-wordmark`
+(Cinzel) in `global.css`. The `font-wordmark` utility is the only way Cinzel
+should ever be applied.
 
 Signature CSS utilities to carry over exactly: `container-x`, `brand-wordmark`, `exotic-border`, `corner-ornaments`, and the welcome animation keyframes. The ornate copper detailing is the motif.
 

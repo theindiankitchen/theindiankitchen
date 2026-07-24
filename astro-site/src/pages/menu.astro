@@ -2,22 +2,11 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CinematicMenuSection from "../components/CinematicMenuSection.tsx";
 import ReservationForm from "../components/ReservationForm.tsx";
-import {
-  BIRYANI, TIFFINS, DOSA, STREET, APPETIZERS, SOUPS, SNACKS, CURRY, DRINKS, DESSERTS,
-} from "../data/menu.ts";
+import { CATEGORIES } from "../data/menu.ts";
 
-const SECTION_NAV: [string, string][] = [
-  ["Biryani & Rice", "biryani"],
-  ["Tiffins", "tiffins"],
-  ["Dosa", "dosa"],
-  ["Street Style", "street"],
-  ["Appetizers", "appetizers"],
-  ["Soups", "soups"],
-  ["Snacks", "snacks"],
-  ["Curries & Bread", "curries"],
-  ["Drinks", "drinks"],
-  ["Desserts", "desserts"],
-];
+// Jump-to chips and sections both derive from the single CATEGORIES manifest,
+// so section order, ids and labels can never drift apart.
+const SECTION_NAV: [string, string][] = CATEGORIES.map((c) => [c.label, c.id]);
 
 const title = "Menu, Biryani, Dosa and South Indian | The Indian Kitchen Toronto";
 const description =
@@ -27,7 +16,6 @@ const description =
 <BaseLayout title={title} description={description}>
   {/* HERO: image background with the sticky reveal. */}
   <section slot="hero" class="reveal-hero flex items-center">
-    {/* IMAGE GOES HERE: menu hero background, swap after the photoshoot. */}
     <img src="/assets/menu-dosa-hero.jpg" alt="" aria-hidden="true" class="absolute inset-0 size-full object-cover" />
     <div aria-hidden="true" class="img-overlay"></div>
 
@@ -45,12 +33,13 @@ const description =
     </div>
   </section>
 
-  {/* CUISINE bar: jump-to category chips, first thing after the hero. */}
+  {/* CUISINE bar: jump-to category chips, first thing after the hero.
+      Wraps on every width so all 23 chips stay on screen with no overflow. */}
   <section aria-label="Menu categories" class="bg-cream-pattern text-olive py-6 md:py-8">
     <div class="container-x">
-      <div class="flex flex-nowrap md:flex-wrap md:justify-center items-center gap-2.5 md:gap-2 overflow-x-auto md:overflow-visible snap-x snap-proximity -mx-6 px-6 md:mx-0 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden [-webkit-overflow-scrolling:touch]">
+      <div class="flex flex-wrap justify-center items-center gap-2 md:gap-2.5">
         {SECTION_NAV.map(([label, anchor]) => (
-          <a href={`#${anchor}`} class="chip-arch chip-arch--idle-cream chip-arch--sm shrink-0 snap-center">
+          <a href={`#${anchor}`} class="chip-arch chip-arch--idle-cream chip-arch--sm">
             <span class="chip-arch__label">{label}</span>
           </a>
         ))}
@@ -58,16 +47,30 @@ const description =
     </div>
   </section>
 
-  <CinematicMenuSection client:visible variant="cream" id="biryani" kicker="Signature, Slow Cooked" title="Biryani & Rice" intro="Aged basmati layered with overnight-marinated meat, sealed and slow-cooked over a low flame in the dum tradition." items={BIRYANI} />
-  <CinematicMenuSection client:visible variant="green" id="tiffins" kicker="Tiffins, Idly, Vada & Puri" title="South Indian Tiffins" intro="Steamed, fluffy and ghee-kissed, the South Indian breakfast counter, served all day." items={TIFFINS} />
-  <CinematicMenuSection client:visible variant="cream" id="dosa" kicker="Madras Mornings" title="Dosa" intro="Fermented rice-and-lentil crepes, ghee-roasted to a deep gold and served the South Indian way." items={DOSA} />
-  <CinematicMenuSection client:visible variant="green" id="street" kicker="Street Style, Indo-Chinese" title="Wok & Street Food" intro="High-flame wok cookery, smoky, glossy, unmistakably Indo-Chinese." items={STREET} />
-  <CinematicMenuSection client:visible variant="cream" id="appetizers" kicker="Sizzling, Small Plates" title="Appetizers" intro="Bite-sized, deeply-spiced openers, built for sharing, dialled for heat." items={APPETIZERS} />
-  <CinematicMenuSection client:visible variant="green" id="soups" kicker="Comfort, Slow Simmered" title="Soups" intro="Restorative, aromatic broths served piping-hot in rustic bowls." items={SOUPS} />
-  <CinematicMenuSection client:visible variant="cream" id="snacks" kicker="Tea Time, Irani Cafe" title="Snacks" intro="Bakery-counter favourites, flaky puffs, sharp samosas, salty-sweet biscuits." items={SNACKS} />
-  <CinematicMenuSection client:visible variant="green" id="curries" kicker="Mains, Curries & Bread" title="Curries, Wraps & Bread" intro="Slow-built gravies served with handmade rumali roti, layered parota and rolled wraps." items={CURRY} />
-  <CinematicMenuSection client:visible variant="cream" id="drinks" kicker="Beverage, Cafe & Cooler" title="Drinks" intro="From steel-tumbler filter coffee to chilled rose milk, the Indian cafe, end to end." items={DRINKS} />
-  <CinematicMenuSection client:visible variant="green" id="desserts" kicker="Sweet, Festive Finish" title="Desserts" intro="Warm, festive, syrup-soaked, the right ending to every meal." items={DESSERTS} />
+  {/* One section per category, backgrounds alternating so no two touch. */}
+  {CATEGORIES.map((c, i) => (
+    <CinematicMenuSection
+      client:visible
+      variant={i % 2 === 0 ? "cream" : "green"}
+      id={c.id}
+      kicker={c.kicker}
+      title={c.label}
+      subtitle={c.subtitle}
+      intro={c.intro}
+      items={c.items}
+    />
+  ))}
+
+  {/* Allergy notice: quiet, palette-styled, at the foot of the menu. */}
+  <section class="bg-olive text-beige/60 py-8 md:py-10 border-t border-beige/10">
+    <div class="container-x">
+      <p class="text-xs md:text-sm leading-relaxed max-w-3xl mx-auto text-center">
+        If you have any allergies, please let us know before you order. We will do our best to
+        help, but please note our kitchen uses all major allergens. Please ask our staff for
+        more information.
+      </p>
+    </div>
+  </section>
 
   {/* RESERVATION: text left, framed form right, on cream. */}
   <section id="reserve" class="py-24 md:py-32 bg-cream-cover text-olive relative overflow-hidden scroll-mt-24">

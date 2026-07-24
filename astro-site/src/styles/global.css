@@ -20,10 +20,15 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-ring: var(--ring);
-  /* Brand pairing. Swap --font-display / --font-body to change site wide.
-     Cinzel matches the engraved Roman-caps "THE INDIAN KITCHEN" wordmark. */
-  --font-display: "Cinzel", "Cormorant Garamond", Georgia, serif;
-  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  /* Montserrat carries the entire site: headings, body, nav, marquee, prices.
+     Display and body are separate tokens but deliberately point at the same
+     face, so swapping either one alone will split the site's voice. */
+  --font-display: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  /* Cinzel is reserved for the "The Indian Kitchen" wordmark and nothing else.
+     Applied via the font-wordmark utility this token generates. Only weight
+     700 is loaded, so keep wordmark text at font-bold. */
+  --font-wordmark: "Cinzel", Georgia, serif;
   /* Existing components use font-serif / font-sans; alias them to the pair. */
   --font-serif: var(--font-display);
   --font-sans: var(--font-body);
@@ -62,6 +67,9 @@
   --destructive: oklch(0.55 0.18 25);
   --destructive-foreground: #e1c7ae;
   --input: rgba(225, 199, 174, 0.15);
+
+  /* HERO TINT: change this one value to make the desktop hero tint darker or lighter, 0 is none, 1 is black */
+  --hero-tint: 0;
 
   /* Tile size for the cream pattern background. Change to rescale the motif.
      Never stretch the pattern with cover; it tiles at this width. */
@@ -114,8 +122,7 @@
 }
 
 /* ---------- Cream pattern background (tiled, never stretched) ---------- */
-/* Opaque cream underneath so the block is solid before the tile loads.
-   GOES HERE: /public/cream-bg.png is the brand pattern, swap after final art. */
+/* Opaque cream underneath so the block is solid before the tile loads. */
 @utility bg-cream-pattern {
   background-color: var(--beige);
   background-image: url("/cream-bg.png");
@@ -134,8 +141,7 @@
 }
 
 /* ---------- Green pattern background (tiled at natural size) ---------- */
-/* GOES HERE: /public/green-bg.png is the brand green pattern, drop the final
-   art into public/. The tile is small, so it repeats at its natural size. */
+/* The tile is small, so it repeats at its natural size. */
 @utility bg-green-pattern {
   background-color: var(--olive);
   background-image: url("/green-bg.png");
@@ -148,7 +154,7 @@
 @utility img-overlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.42);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 /* ---------- Shared price style: clean sans, copper, lining numerals ---------- */
@@ -278,7 +284,7 @@
   flex-direction: column;
   align-items: center;
   line-height: 1;
-  font-family: var(--font-body);
+  font-family: var(--font-wordmark);
   text-transform: uppercase;
 }
 .brand-wordmark .bw-the {
@@ -377,7 +383,20 @@
   height: 100svh;
   z-index: 1;
   overflow: hidden;
-  background-color: var(--matte);
+  background-color: var(--olive);
+}
+/* Desktop-only dark tint over the home and contact heroes. The overlay sits
+   above the hero image but below all hero text, headings and buttons, and never
+   blocks clicks. Below the desktop breakpoint it does not render at all. */
+@media (min-width: 768px) {
+  .hero-tint::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: rgba(0, 0, 0, var(--hero-tint));
+  }
 }
 .reveal-content {
   position: relative;

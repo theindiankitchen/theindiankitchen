@@ -2,9 +2,8 @@ import { useState, type FormEvent } from "react";
 import { ArrowUpRight, ChevronDown, Check, Loader2 } from "lucide-react";
 
 // ---------------------------------------------------------------------------
-// Web3Forms access key. This is a public-safe key (no secret). Replace the
-// placeholder below with the real key from https://web3forms.com. The inbox
-// that receives submissions is whatever address that key is registered to.
+// Web3Forms access key. This is a public-safe key (no secret). The inbox that
+// receives submissions is whatever address that key is registered to.
 // ---------------------------------------------------------------------------
 const WEB3FORMS_ACCESS_KEY = "REPLACE_WITH_YOUR_WEB3FORMS_ACCESS_KEY";
 
@@ -85,7 +84,7 @@ export default function CateringForm() {
       {success && <SuccessModal onClose={() => setSuccess(false)} />}
 
       {/* Framed off-white panel with a copper double border, matching reservation. */}
-      <div className="relative rounded-[1.5rem] border border-saffron/50 p-2.5 bg-[#0B1F0C] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.35)]">
+      <div className="relative rounded-[1.5rem] border border-saffron/50 p-2.5 bg-olive shadow-[0_30px_80px_-40px_rgba(0,0,0,0.35)]">
         <div className="rounded-[1.15rem] border border-saffron/30 p-6 md:p-8">
           <form onSubmit={onSubmit}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -110,7 +109,7 @@ export default function CateringForm() {
                 name="notes"
                 rows={4}
                 placeholder="Preferred dishes, spice levels, serving style, or any special requests."
-                className="w-full rounded-2xl bg-[#e1c7ae] px-4 py-3.5 text-[#0b1f0c] placeholder:text-[#0b1f0c]/55 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#b36512]/40 focus:border-[#b36512] transition-all"
+                className="w-full rounded-2xl bg-[#e1c7ae] px-4 py-3.5 text-olive placeholder:text-olive/55 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#b36512]/40 focus:border-[#b36512] transition-all"
               />
             </div>
 
@@ -157,7 +156,7 @@ function Field({ label, name, className, ...rest }: FieldProps) {
         name={name}
         {...rest}
         className={
-          "w-full rounded-2xl bg-[#e1c7ae] px-5 py-3.5 text-[#0b1f0c] placeholder:text-[#0b1f0c]/55 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#b36512]/40 focus:border-[#b36512] transition-all " +
+          "w-full rounded-2xl bg-[#e1c7ae] px-5 py-3.5 text-olive placeholder:text-olive/55 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#b36512]/40 focus:border-[#b36512] transition-all " +
           (className ?? "")
         }
       />
@@ -177,14 +176,14 @@ function SelectField({ label, name, options, required }: { label: string; name: 
           name={name}
           required={required}
           defaultValue=""
-          className="w-full appearance-none rounded-2xl bg-[#e1c7ae] border border-transparent px-5 py-3.5 pr-12 text-[#0b1f0c] focus:outline-none focus:ring-2 focus:ring-[#b36512]/40 focus:border-[#b36512] transition-all"
+          className="w-full appearance-none rounded-2xl bg-[#e1c7ae] border border-transparent px-5 py-3.5 pr-12 text-olive focus:outline-none focus:ring-2 focus:ring-[#b36512]/40 focus:border-[#b36512] transition-all"
         >
           <option value="" disabled>Select</option>
           {options.map((o) => (
             <option key={o} value={o}>{o}</option>
           ))}
         </select>
-        <ChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 size-4 text-[#0b1f0c]" />
+        <ChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 size-4 text-olive" />
       </div>
     </div>
   );

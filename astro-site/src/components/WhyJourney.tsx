@@ -2,7 +2,6 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// GOES HERE: swap each panel image after the photoshoot.
 const PANELS: { img: string; title: string; desc: string }[] = [
   { img: "/assets/hero-spread.jpg", title: "Freshly prepared", desc: "Cooked on the day of your event with overnight marinations, never held or reheated." },
   { img: "/assets/biryani-hyderabadi.jpg", title: "Authentic recipes", desc: "Heritage Hyderabadi and South Indian preparations, exactly as they are meant to taste." },
@@ -18,9 +17,8 @@ function Panel({ p, index }: { p: (typeof PANELS)[number]; index: number }) {
   return (
     <div className="why-panel-inner grid gap-10 md:gap-16 md:grid-cols-[1.1fr_0.9fr] items-center w-full">
       <div className="relative aspect-[4/3] md:aspect-[4/5] max-h-[50vh] md:max-h-[60vh] w-full overflow-hidden rounded-[2rem] ring-1 ring-saffron/15 shadow-2xl">
-        {/* IMAGE GOES HERE: swap this panel photo after the shoot. */}
         <img src={p.img} alt={p.title} loading="lazy" className="size-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-matte/40 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-matte/40 to-transparent" />
       </div>
       <div className="md:pr-4">
         <span className="text-xs uppercase tracking-[0.4em] text-saffron">

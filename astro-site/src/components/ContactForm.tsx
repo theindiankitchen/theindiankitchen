@@ -1,8 +1,8 @@
 import { useState, type FormEvent } from "react";
 import { ArrowUpRight, Check, Loader2 } from "lucide-react";
 
-// Public-safe Web3Forms access key. GOES HERE: replace with the real key from
-// https://web3forms.com. The inbox is whatever address the key is registered to.
+// Public-safe Web3Forms access key (no secret). The inbox is whatever address
+// the key is registered to.
 const WEB3FORMS_ACCESS_KEY = "REPLACE_WITH_YOUR_WEB3FORMS_ACCESS_KEY";
 
 const BRAND = "The Indian Kitchen, Biryani and Dosa";
@@ -63,7 +63,7 @@ export default function ContactForm() {
   return (
     <>
       {success && <SuccessModal onClose={() => setSuccess(false)} />}
-      <div className="relative rounded-[1.5rem] border border-saffron/50 p-2.5 bg-[#0B1F0C] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.35)]">
+      <div className="relative rounded-[1.5rem] border border-saffron/50 p-2.5 bg-olive shadow-[0_30px_80px_-40px_rgba(0,0,0,0.35)]">
         <div className="rounded-[1.15rem] border border-saffron/30 p-6 md:p-8">
       <form onSubmit={onSubmit}>
         <div className="grid grid-cols-1 gap-5">
@@ -80,7 +80,7 @@ export default function ContactForm() {
               rows={5}
               required
               placeholder="How can we help?"
-              className="w-full rounded-2xl bg-[#e1c7ae] px-4 py-3.5 text-[#0b1f0c] placeholder:text-[#0b1f0c]/55 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#b36512]/40 focus:border-[#b36512] transition-all"
+              className="w-full rounded-2xl bg-[#e1c7ae] px-4 py-3.5 text-olive placeholder:text-olive/55 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#b36512]/40 focus:border-[#b36512] transition-all"
             />
           </div>
         </div>
@@ -125,7 +125,7 @@ function Field({ label, name, className, ...rest }: FieldProps) {
         name={name}
         {...rest}
         className={
-          "w-full rounded-2xl bg-[#e1c7ae] px-5 py-3.5 text-[#0b1f0c] placeholder:text-[#0b1f0c]/55 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#b36512]/40 focus:border-[#b36512] transition-all " +
+          "w-full rounded-2xl bg-[#e1c7ae] px-5 py-3.5 text-olive placeholder:text-olive/55 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#b36512]/40 focus:border-[#b36512] transition-all " +
           (className ?? "")
         }
       />

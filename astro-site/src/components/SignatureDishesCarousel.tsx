@@ -1,44 +1,63 @@
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight, ChefHat, Leaf, Drumstick } from "lucide-react";
+import { CATEGORIES } from "../data/menu";
 
-// Images live in /public/assets so they resolve from this React island.
-// GOES HERE: these dish photos are placeholders to swap after the shoot.
-const biryaniMutton = "/assets/biryani-mutton.jpg";
+// Dish photos live in /public/assets so they resolve from this React island.
 const riceSchezwan = "/assets/rice-schezwan.jpg";
-const sigPrawns = "/assets/sig-prawns-biryani.jpg";
 const sigKeemaDosa = "/assets/sig-keema-dosa.jpg";
 const sigButterChickenDosa = "/assets/sig-butter-chicken-dosa.jpg";
-const imgNattuKodiFryBiryani = "/assets/dishes/nattu-kodi-fry-biryani.jpg";
 const imgBenneDosa = "/assets/dishes/benne-dosa.jpg";
 const imgBennePodiDosa = "/assets/dishes/benne-podi-dosa.jpg";
 const imgChickenVindolaDosa = "/assets/dishes/chicken-vindola-dosa.jpg";
 const imgPizzaDosa = "/assets/dishes/pizza-dosa.jpg";
-const imgDevilChickenNoodles = "/assets/dishes/devil-chicken-noodles.jpg";
-const imgJumboWings = "/assets/dishes/jumbo-wings.jpg";
 
 type Dish = {
   name: string;
+  /** Menu-data key for price/veg lookup when the display name differs. */
+  menuName?: string;
   tagline: string;
   price: string;
   image: string;
   veg: boolean;
   chefSpecial?: boolean;
+  availability?: string;
 };
 
-const DISHES: Dish[] = [
-  { name: "Thalapakattu Mutton Biryani", tagline: "Dark Dindigul masala, slow-cooked mutton", price: "17.99", image: biryaniMutton, veg: false, chefSpecial: true },
-  { name: "Nattu Kodi Fry Biryani", tagline: "Country chicken slow-fried with aromatic basmati", price: "17.99", image: imgNattuKodiFryBiryani, veg: false, chefSpecial: true },
-  { name: "Prawns Fry Biryani", tagline: "Coastal-spiced prawns, aged basmati", price: "17.99", image: sigPrawns, veg: false, chefSpecial: true },
-  { name: "Benne Dosa Plain", tagline: "Karnataka butter dosa, soft inside, crisp edges", price: "9.99", image: imgBenneDosa, veg: true, chefSpecial: true },
-  { name: "Benne Ghee Podi Dosa", tagline: "Butter dosa dusted with spicy ghee podi", price: "13.99", image: imgBennePodiDosa, veg: true, chefSpecial: true },
-  { name: "Mutton Keema Dosa", tagline: "Crisp dosa rolled with spiced mince", price: "12.99", image: sigKeemaDosa, veg: false, chefSpecial: true },
-  { name: "Butter Chicken Dosa", tagline: "Creamy butter chicken in a golden crepe", price: "13.99", image: sigButterChickenDosa, veg: false, chefSpecial: true },
-  { name: "Chicken Vindola Dosa", tagline: "Tangy Goan-style vindaloo chicken in a crisp dosa", price: "12.99", image: imgChickenVindolaDosa, veg: false, chefSpecial: true },
-  { name: "Pizza Dosa", tagline: "Indo-fusion cheese, capsicum and house masala on dosa", price: "13.99", image: imgPizzaDosa, veg: true, chefSpecial: true },
-  { name: "Devil Chicken Fried Rice", tagline: "Fiery chili-oil glazed basmati, slow-building heat", price: "18.99", image: riceSchezwan, veg: false, chefSpecial: true },
-  { name: "Devil Chicken Noodles", tagline: "Chili-lacquered Hakka noodles with devil chicken", price: "18.99", image: imgDevilChickenNoodles, veg: false, chefSpecial: true },
-  { name: "Indian Crispy Fry (Jumbo Wings)", tagline: "Oversized wings, crisp-fried, tossed in house masala", price: "16.99", image: imgJumboWings, veg: false, chefSpecial: true },
+// Every card resolves its price and veg flag from the menu data so a signature
+// card can never drift from the menu page. Biryanis carry dual For 1 / For 3
+// pricing; the card has room for one figure, so we show the For 1 price (the
+// card already prefixes it with "From").
+const MENU_BY_NAME = new Map(CATEGORIES.flatMap((c) => c.items).map((i) => [i.name, i] as const));
+function fromMenu(name: string) {
+  // Fail loud at build time. A miss means a card has drifted from the menu data,
+  // and a silent wrong price is worse than a broken build.
+  const it = MENU_BY_NAME.get(name);
+  if (!it) throw new Error(`Signature dish not found in menu data: ${name}`);
+  return { price: it.priceFor1 ?? it.price ?? "", veg: it.veg ?? false };
+}
+
+// Normalise any stored figure to a dollar sign and two decimals at render time.
+function formatPrice(raw: string): string {
+  const n = parseFloat(raw);
+  return Number.isFinite(n) ? `$${n.toFixed(2)}` : raw;
+}
+
+const SIGNATURE: Omit<Dish, "price" | "veg">[] = [
+  { name: "Madurai SPL Mutton Biryani", tagline: "Madurai-style mutton, rich and deeply spiced", image: "/assets/dishes/madurai-spl-mutton-biryani.png", chefSpecial: true, availability: "Weekends Only" },
+  { name: "Chicken Fry Piece Biryani", tagline: "Boneless fry pieces layered with aged basmati", image: "/assets/dishes/chicken-fry-piece-biryani.jpg", chefSpecial: true },
+  { name: "Poori with Chicken (3pc)", tagline: "Puffed pooris with a spiced chicken curry.", image: "/assets/dishes/poori-with-chicken.png", chefSpecial: true },
+  { name: "Benne Dosa Plain", menuName: "Benne Dosa Plain with Ghee", tagline: "Karnataka butter dosa, soft inside, crisp edges", image: imgBenneDosa, chefSpecial: true },
+  { name: "Benne Ghee Podi Dosa", menuName: "Benne Ghee Podi Dosa (2pcs)", tagline: "Butter dosa dusted with spicy ghee podi", image: imgBennePodiDosa, chefSpecial: true },
+  { name: "Mutton Keema Dosa", menuName: "Mutton Kheema Dosa", tagline: "Crisp dosa rolled with spiced mince", image: sigKeemaDosa, chefSpecial: true },
+  { name: "Butter Chicken Dosa", tagline: "Creamy butter chicken in a golden crepe", image: sigButterChickenDosa, chefSpecial: true },
+  { name: "Chicken Vindaloo Dosa", tagline: "Tangy Goan-style vindaloo chicken in a crisp dosa", image: imgChickenVindolaDosa, chefSpecial: true },
+  { name: "Pizza Dosa", tagline: "Indo-fusion cheese, capsicum and house masala on dosa", image: imgPizzaDosa, chefSpecial: true },
+  { name: "Devil Chicken Fried Rice", menuName: "Devil Chicken Fried", tagline: "Fiery chili-oil glazed basmati, slow-building heat", image: riceSchezwan, chefSpecial: true },
+  { name: "Chicken Natti Kurma Wrap", tagline: "Country chicken kurma rolled in flaky parota.", image: "assets/dishes/chicken-natti-kurma-wrap.png", chefSpecial: true },
+  { name: "Fried Chicken Wings", tagline: "Oversized wings, crisp-fried and tossed in house masala", image: "assets/dishes/jumbo-wings.jpg", chefSpecial: true },
 ];
+
+const DISHES: Dish[] = SIGNATURE.map((d) => ({ ...d, ...fromMenu(d.menuName ?? d.name) }));
 
 function VegMark({ veg }: { veg: boolean }) {
   return (
@@ -90,23 +109,34 @@ export default function SignatureDishesCarousel() {
               data-card
               className="group relative shrink-0 snap-center sm:snap-start w-[80vw] sm:w-[52vw] md:w-[340px] lg:w-[320px] rounded-[1.4rem] overflow-hidden bg-olive ring-1 ring-saffron/15 shadow-[0_24px_60px_-32px_rgba(0,0,0,0.7)] transition-all duration-500 hover:ring-saffron/40 hover:-translate-y-1"
             >
-              {/* IMAGE GOES HERE: swap this dish photo after the shoot. */}
+              {/* Empty src falls back to a gradient placeholder. */}
               <div className="relative aspect-[4/5] overflow-hidden">
-                <img
-                  src={dish.image}
-                  alt={dish.name}
-                  loading="lazy"
-                  width={1024}
-                  height={1280}
-                  className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
+                {dish.image ? (
+                  <img
+                    src={dish.image}
+                    alt={dish.name}
+                    loading="lazy"
+                    width={1024}
+                    height={1280}
+                    className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="size-full bg-linear-to-b from-olive to-matte" />
+                )}
                 <div className="absolute top-3 left-3 right-3 flex items-start justify-between gap-2">
                   <VegMark veg={dish.veg} />
-                  {dish.chefSpecial && (
-                    <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-saffron bg-matte/80 backdrop-blur-sm border border-saffron/50 rounded-full px-3 py-1">
-                      <ChefHat className="size-3" /> Chef Special
-                    </span>
-                  )}
+                  <div className="flex flex-col items-end gap-2">
+                    {dish.chefSpecial && (
+                      <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-saffron bg-matte/80 backdrop-blur-sm border border-saffron/50 rounded-full px-3 py-1">
+                        <ChefHat className="size-3" /> Chef Special
+                      </span>
+                    )}
+                    {dish.availability && (
+                      <span className="text-[10px] uppercase tracking-[0.2em] text-beige bg-matte/80 backdrop-blur-sm border border-beige/40 rounded-full px-3 py-1">
+                        {dish.availability}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
 
@@ -115,7 +145,7 @@ export default function SignatureDishesCarousel() {
                 <p className="mt-2 text-sm text-beige/60 leading-relaxed line-clamp-2">{dish.tagline}</p>
                 <div className="mt-5 flex items-end justify-between border-t border-white/10 pt-4">
                   <span className="text-[10px] uppercase tracking-[0.3em] text-beige/50">From</span>
-                  <span className="price text-xl leading-none">${dish.price}</span>
+                  <span className="price text-xl leading-none">{formatPrice(dish.price)}</span>
                 </div>
               </div>
             </article>

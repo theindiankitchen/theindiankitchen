@@ -1,8 +1,8 @@
 import { useState, type FormEvent } from "react";
 import { ArrowUpRight, Check, Loader2 } from "lucide-react";
 
-// Public-safe Web3Forms access key. GOES HERE: replace with the real key from
-// https://web3forms.com. The inbox is whatever address the key is registered to.
+// Public-safe Web3Forms access key (no secret). The inbox is whatever address
+// the key is registered to.
 const WEB3FORMS_ACCESS_KEY = "REPLACE_WITH_YOUR_WEB3FORMS_ACCESS_KEY";
 
 const BRAND = "The Indian Kitchen, Biryani and Dosa";
@@ -84,7 +84,7 @@ export default function ReservationForm() {
             </div>
 
             <div className="mt-5">
-              <label htmlFor="notes" className="block text-[11px] uppercase tracking-[0.12em] mb-2 font-medium text-[#0b1f0c]">
+              <label htmlFor="notes" className="block text-[11px] uppercase tracking-[0.12em] mb-2 font-medium text-olive">
                 Special Requests
               </label>
               <textarea
@@ -92,12 +92,12 @@ export default function ReservationForm() {
                 name="notes"
                 rows={4}
                 placeholder="High chair, celebration, seating preference, dietary notes."
-                className="w-full rounded-2xl bg-[#e1c7ae] px-4 py-3.5 text-[#0b1f0c] placeholder:text-[#0b1f0c]/55 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#b36512]/40 focus:border-[#b36512] transition-all"
+                className="w-full rounded-2xl bg-[#e1c7ae] px-4 py-3.5 text-olive placeholder:text-olive/55 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#b36512]/40 focus:border-[#b36512] transition-all"
               />
             </div>
 
             <div className="mt-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <p className="text-xs text-[#0b1f0c]/60 max-w-xs">
+              <p className="text-xs text-olive/60 max-w-xs">
                 We hold reservations for 15 minutes. For parties over 8, please call us directly.
               </p>
               <button type="submit" disabled={submitting} className="btn-arch btn-arch--solid disabled:opacity-60 disabled:cursor-not-allowed">
@@ -131,7 +131,7 @@ type FieldProps = React.InputHTMLAttributes<HTMLInputElement> & { label: string 
 function Field({ label, name, className, ...rest }: FieldProps) {
   return (
     <div>
-      <label htmlFor={name} className="block text-[11px] uppercase tracking-[0.12em] mb-2 font-medium text-[#0b1f0c]">
+      <label htmlFor={name} className="block text-[11px] uppercase tracking-[0.12em] mb-2 font-medium text-olive">
         {label}
       </label>
       <input
@@ -139,7 +139,7 @@ function Field({ label, name, className, ...rest }: FieldProps) {
         name={name}
         {...rest}
         className={
-          "w-full rounded-2xl bg-[#e1c7ae] px-5 py-3.5 text-[#0b1f0c] placeholder:text-[#0b1f0c]/55 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#b36512]/40 focus:border-[#b36512] transition-all " +
+          "w-full rounded-2xl bg-[#e1c7ae] px-5 py-3.5 text-olive placeholder:text-olive/55 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#b36512]/40 focus:border-[#b36512] transition-all " +
           (className ?? "")
         }
       />

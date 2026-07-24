@@ -1,6 +1,6 @@
 ---
-// Marquee uses the brand display font (Cinzel), loaded globally in BaseLayout,
-// so the whole site reads as one voice. Only the font family changed here.
+// Marquee uses the site font (Montserrat) via --font-body, so it reads as one
+// voice with the rest of the page. Cinzel is wordmark-only, never used here.
 
 // Brewed-style marquee: two rows scrolling in opposite directions, seamless
 // loop. Top row solid cream, bottom row copper outline. A copper period sits
@@ -86,13 +86,12 @@ const ROW_B = [
   }
   .marquee__name,
   .marquee__dot {
-    font-family: "Cinzel", Georgia, serif;
+    font-family: var(--font-body);
     font-weight: 500;
     font-size: clamp(1.3rem, 3vw, 4rem);
     line-height: 1.1;
   }
   .marquee__name {
-    /* Cinzel is a caps titling face; a touch of tracking keeps it even. */
     letter-spacing: 0.01em;
   }
   /* Period sits tight after the last letter, on the baseline, always solid copper. */
