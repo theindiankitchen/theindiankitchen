@@ -1,0 +1,168 @@
+---
+// NOTE FOR THE CLIENT: these terms are a good faith template written to match how
+// this website actually works today. They are not legal advice, I am not a
+// lawyer, and they should be reviewed by a qualified lawyer before launch,
+// especially the limitation of liability and governing law sections.
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Terms and Conditions | The Indian Kitchen, Toronto";
+const description =
+  "The terms that apply when you use The Indian Kitchen website, covering menu and pricing information, third party ordering, catering inquiries and liability.";
+
+const lastUpdated = "29 July 2026";
+const EMAIL = "hello@theindiankitchen.ca";
+---
+
+<BaseLayout title={title} description={description}>
+  {/* PAGE HEAD: compact band, clears the fixed header, no full screen hero. */}
+  <section class="bg-green text-beige pt-32 md:pt-48 pb-14 md:pb-20">
+    <div class="container-x max-w-3xl text-center mx-auto">
+      <span class="inline-block text-[11px] uppercase tracking-[0.45em] text-saffron">Legal</span>
+      <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl mt-6 leading-[1.05]">
+        Terms and Conditions
+      </h1>
+      <div class="mt-7 flex items-center justify-center gap-3 text-saffron">
+        <span class="h-px w-10 bg-saffron/50"></span>
+        <span class="size-2 rotate-45 border border-saffron"></span>
+        <span class="h-px w-10 bg-saffron/50"></span>
+      </div>
+      <p class="mt-6 text-xs uppercase tracking-[0.25em] text-beige/60">
+        Last updated, {lastUpdated}
+      </p>
+    </div>
+  </section>
+
+  {/* TERMS BODY */}
+  <section class="py-20 md:py-28 bg-cream-pattern text-olive">
+    <div class="container-x">
+      <div class="max-w-3xl mx-auto legal-prose">
+        <p class="text-lg">
+          These terms apply to your use of the website of The Indian Kitchen, Biryani
+          and Dosa, a restaurant at 3334 Yonge St, North York, Toronto, ON M4N 2M4. By
+          browsing this site you accept them. If you do not agree with them, please do
+          not use the site.
+        </p>
+
+        <h2>What this website is</h2>
+        <p>
+          This site is here to show you who we are and what we cook. Everything on it,
+          the menu, dish descriptions, prices, photographs, opening hours and event
+          information, is provided for general information. We keep it as accurate as
+          we reasonably can, but it may change at any time without notice, and it may
+          occasionally be out of date or contain errors.
+        </p>
+        <p>
+          Photographs are of our food, but presentation and portions vary from plate to
+          plate. Treat images as an impression of a dish rather than a promise about
+          how it will arrive.
+        </p>
+
+        <h2>Prices and availability</h2>
+        <p>
+          Prices shown on this site are indicative. They are not an offer, and they are
+          not guaranteed. The price you pay and whether a dish is available are
+          confirmed at the point of order, whether that is in the restaurant, over the
+          phone or on a delivery platform. Where a price here differs from the price at
+          the point of order, the point of order price applies.
+        </p>
+        <p>
+          Menu items can sell out, come off the menu seasonally, or change in
+          preparation. Dietary and allergen notes on this site are a guide only. Our
+          kitchen handles nuts, dairy, gluten and other allergens, and we cannot
+          guarantee that any dish is free of them. If you have an allergy or a dietary
+          requirement, speak to us directly before you order.
+        </p>
+
+        <h2>Ordering and delivery</h2>
+        <p>
+          You cannot place an order or pay on this website. Our order links take you to
+          third party platforms, currently Uber Eats and DoorDash. Once you are there,
+          your order is a contract between you and that platform, subject to their
+          terms, their pricing, their fees and their privacy policies. Delivery times,
+          delivery fees, driver conduct, refunds and order accuracy on those platforms
+          are handled under their rules, and we do not control them.
+        </p>
+
+        <h2>Catering inquiries and reservations</h2>
+        <p>
+          Submitting the catering form, the contact form or the reservation form sends
+          us a request. It is not a booking, and it does not commit us to anything.
+          Nothing is confirmed until someone from the restaurant replies to you and
+          confirms it directly. Availability, final pricing, deposits and any other
+          arrangements for an event are agreed in that conversation, not on this
+          website.
+        </p>
+        <p>
+          We may decline a request, and we may need to change or cancel an arrangement
+          if circumstances require it. If that happens we will tell you as soon as we
+          can.
+        </p>
+
+        <h2>Acceptable use</h2>
+        <p>
+          Please use this site lawfully and reasonably. Do not attempt to interfere
+          with it, gain unauthorised access to it, scrape it at a scale that affects
+          its operation, or submit content through our forms that is unlawful,
+          abusive or deliberately false.
+        </p>
+
+        <h2>Intellectual property</h2>
+        <p>
+          The Indian Kitchen name, logo, brand, and the content of this site including
+          text, dish descriptions, photographs, design, layout and code, belong to The
+          Indian Kitchen or are used with permission. You may view the site, and share
+          links to it. You may not copy, reproduce, republish or use our content or
+          branding for commercial purposes without our written permission.
+        </p>
+
+        <h2>Links to other sites</h2>
+        <p>
+          This site links out to third parties, including delivery platforms, Google
+          Maps and Instagram. Those links are provided for convenience. We are not
+          responsible for the content, terms or practices of any site we link to.
+        </p>
+
+        <h2>Limitation of liability</h2>
+        <p>
+          This website is provided as it is. We do not warrant that it will always be
+          available, uninterrupted or free of errors.
+        </p>
+        <p>
+          To the fullest extent permitted by law, The Indian Kitchen is not liable for
+          any loss or damage arising from your use of this website, from reliance on
+          information published on it, or from your dealings with any third party
+          platform we link to. This includes indirect and consequential loss, such as
+          lost profit or lost opportunity.
+        </p>
+        <p>
+          Nothing in these terms limits or excludes any liability that cannot lawfully
+          be limited or excluded, including liability for death or personal injury
+          caused by negligence, or for fraud. Nothing here affects your statutory
+          rights as a consumer under Ontario or Canadian law.
+        </p>
+
+        <h2>Changes to these terms</h2>
+        <p>
+          We may update these terms from time to time. The current version is always
+          the one published here, with the date shown at the top of this page.
+          Continuing to use the site after a change means you accept the updated
+          terms.
+        </p>
+
+        <h2>Governing law</h2>
+        <p>
+          These terms are governed by the laws of the Province of Ontario and the
+          federal laws of Canada that apply in it. Any dispute relating to this website
+          or to these terms falls to the courts of Ontario, Canada.
+        </p>
+
+        <h2>Contact us</h2>
+        <p>
+          Questions about these terms can go to
+          <a href={`mailto:${EMAIL}`}>{EMAIL}</a>, or by post to The Indian Kitchen,
+          3334 Yonge St, North York, Toronto, ON M4N 2M4, Canada.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

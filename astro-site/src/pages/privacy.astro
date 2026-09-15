@@ -1,0 +1,203 @@
+---
+// NOTE FOR THE CLIENT: this policy is a good faith template written to describe
+// how this website actually behaves today. It is not legal advice, I am not a
+// lawyer, and it should be reviewed by a qualified lawyer before launch. If the
+// site later adds analytics, advertising, online payments or a customer
+// database, this page has to be updated to match.
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Privacy Policy | The Indian Kitchen, Toronto";
+const description =
+  "How The Indian Kitchen handles the information you send through our website, what we collect, why we collect it, and how to ask us to delete it.";
+
+const lastUpdated = "29 July 2026";
+const EMAIL = "hello@theindiankitchen.ca";
+---
+
+<BaseLayout title={title} description={description}>
+  {/* PAGE HEAD: compact band, clears the fixed header, no full screen hero. */}
+  <section class="bg-green text-beige pt-32 md:pt-48 pb-14 md:pb-20">
+    <div class="container-x max-w-3xl text-center mx-auto">
+      <span class="inline-block text-[11px] uppercase tracking-[0.45em] text-saffron">Legal</span>
+      <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl mt-6 leading-[1.05]">
+        Privacy Policy
+      </h1>
+      <div class="mt-7 flex items-center justify-center gap-3 text-saffron">
+        <span class="h-px w-10 bg-saffron/50"></span>
+        <span class="size-2 rotate-45 border border-saffron"></span>
+        <span class="h-px w-10 bg-saffron/50"></span>
+      </div>
+      <p class="mt-6 text-xs uppercase tracking-[0.25em] text-beige/60">
+        Last updated, {lastUpdated}
+      </p>
+    </div>
+  </section>
+
+  {/* POLICY BODY */}
+  <section class="py-20 md:py-28 bg-cream-pattern text-olive">
+    <div class="container-x">
+      <div class="max-w-3xl mx-auto legal-prose">
+        <p class="text-lg">
+          This website belongs to The Indian Kitchen, Biryani and Dosa, a restaurant
+          at 3334 Yonge St, North York, Toronto, ON M4N 2M4. This page explains, in
+          plain language, what happens to your information when you use it.
+        </p>
+        <p>
+          The short version: this is a marketing website. It exists to show you our
+          menu and let you get in touch. We collect almost nothing, we do not track
+          you, and the only information we ever see is what you deliberately type
+          into one of our forms and send to us.
+        </p>
+
+        <h2>What we collect</h2>
+        <p>
+          We collect personal information in one situation only, when you fill in and
+          submit a form on this site. There are three of them:
+        </p>
+        <ul>
+          <li>
+            <strong>Catering inquiry form.</strong> Your name, email address, phone
+            number, and the details of your event, such as venue or address, date and
+            time, number of guests, type of event, food preference, allergy
+            information and any notes you add.
+          </li>
+          <li>
+            <strong>Contact form.</strong> Your name, email address, optional phone
+            number, and your message.
+          </li>
+          <li>
+            <strong>Table reservation form.</strong> Your name, email address, phone
+            number, and your requested date, time, party size and any notes.
+          </li>
+        </ul>
+        <p>
+          Please only include what you are comfortable sending by email. There is no
+          need to send us payment details, identification documents or medical
+          information, and we ask that you do not.
+        </p>
+        <p>
+          We do not have accounts, logins or a customer database. Nothing you submit
+          is stored in a database on our side.
+        </p>
+
+        <h2>How we use it</h2>
+        <p>
+          We use what you send us to reply to you and nothing else. That means
+          answering a catering inquiry, responding to a message, or confirming a
+          table. If you ask us about an event, we may use your details to follow up
+          about that event.
+        </p>
+        <p>
+          We do not add you to a mailing list, we do not send marketing unless you
+          have clearly asked us to, and we do not build a profile of you.
+        </p>
+
+        <h2>We do not sell your information</h2>
+        <p>
+          We do not sell, rent or trade your personal information to anyone. We do not
+          share it with advertisers or data brokers. The only parties who ever handle
+          it are the service that delivers your form submission to our inbox and, if
+          it ever became legally required, the relevant authority.
+        </p>
+
+        <h2>Third party services this site relies on</h2>
+        <ul>
+          <li>
+            <strong>Web3Forms</strong> processes our form submissions. When you press
+            submit, your entries are passed to Web3Forms, which turns them into an
+            email and delivers it to the restaurant. They handle the message in
+            transit rather than keeping it as our records. Their handling of that data
+            is governed by their own privacy policy.
+          </li>
+          <li>
+            <strong>Uber Eats and DoorDash.</strong> Online ordering and delivery do
+            not happen on this website. Our order buttons send you to those platforms,
+            where your order, payment and delivery details are collected and handled
+            entirely by them, under their own terms and privacy policies. We never see
+            your payment information.
+          </li>
+          <li>
+            <strong>Google Maps.</strong> Our contact page embeds a Google map so you
+            can find the restaurant. Loading that map means your browser connects to
+            Google, which may collect data such as your IP address under Google's
+            privacy policy. If you would rather not load it, you can skip that page
+            and use the street address above.
+          </li>
+          <li>
+            <strong>Google Fonts.</strong> Our typefaces are served by Google Fonts,
+            so your browser requests them from Google when a page loads.
+          </li>
+          <li>
+            <strong>Instagram.</strong> We link out to our Instagram profile. Once you
+            follow that link you are on Meta's platform, under their policies.
+          </li>
+        </ul>
+
+        <h2>Cookies, analytics and tracking</h2>
+        <p>
+          We do not run analytics on this site. There is no Google Analytics, no
+          advertising network, no tracking pixel, no remarketing tag and no third
+          party cookie set by us.
+        </p>
+        <p>
+          The only thing this site stores in your browser is a single flag that
+          remembers you have dismissed our cookie notice, so the bar does not appear
+          again on every page. It is kept in your browser's local storage, it holds
+          nothing but a yes, and it never leaves your device. Clearing your browser
+          data removes it.
+        </p>
+        <p>
+          Like any website, our hosting provider may keep standard server logs, for
+          example IP addresses and requested pages, for security and reliability. We
+          do not use those logs to identify visitors.
+        </p>
+
+        <h2>How long we keep it</h2>
+        <p>
+          Your form submission arrives as an email in the restaurant's inbox, and it
+          stays there the way any email does, until it is deleted. In practice we keep
+          inquiries while we are dealing with them and for a reasonable period
+          afterwards, so we can look back at a booking or an event if a question comes
+          up. We do not keep them indefinitely as a matter of policy, and we do not
+          copy them into any other system.
+        </p>
+
+        <h2>Asking us to delete your information</h2>
+        <p>
+          You can ask us at any time to tell you what we hold about you, correct it,
+          or delete it. Email <a href={`mailto:${EMAIL}`}>{EMAIL}</a> from the address
+          you contacted us with, or tell us which inquiry you mean, and we will delete
+          the relevant messages from our inbox and confirm once it is done. We aim to
+          reply within a few business days.
+        </p>
+        <p>
+          If your information sits with a delivery platform instead, because you
+          ordered through Uber Eats or DoorDash, you will need to make that request to
+          them, as we have no access to it.
+        </p>
+
+        <h2>Children</h2>
+        <p>
+          This site is not aimed at children, and we do not knowingly collect
+          information from anyone under 13. If you believe a child has sent us
+          personal information, email us and we will remove it.
+        </p>
+
+        <h2>Changes to this policy</h2>
+        <p>
+          If we change how this site handles information, for example by adding
+          analytics or online ordering, we will update this page and change the date
+          at the top. There is no version history, so the page you are reading is
+          always the current one.
+        </p>
+
+        <h2>Contact us</h2>
+        <p>
+          Questions about this policy, or about anything on this page, can go to
+          <a href={`mailto:${EMAIL}`}>{EMAIL}</a>, or by post to The Indian Kitchen,
+          3334 Yonge St, North York, Toronto, ON M4N 2M4, Canada.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

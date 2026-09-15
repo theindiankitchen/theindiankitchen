@@ -1,0 +1,78 @@
+---
+// Non blocking cookie notice, rendered once from BaseLayout so it appears on
+// every page. The dismissal flag lives in localStorage, never in a cookie, and
+// once set the bar never renders again. Styles live in global.css (.cookie-bar).
+const STORAGE_KEY = "tik-cookie-notice-dismissed";
+---
+
+<div
+  id="cookie-notice"
+  class="cookie-bar"
+  role="region"
+  aria-label="Cookie notice"
+  data-storage-key={STORAGE_KEY}
+  hidden
+>
+  <div class="container-x cookie-bar__inner">
+    <p class="cookie-bar__text">
+      We use essential cookies to make this site work. By continuing to browse,
+      you agree to our use of cookies. Read our <a href="/privacy">Privacy Policy</a>.
+    </p>
+    <button type="button" id="cookie-notice-accept" class="btn-arch btn-arch--solid">
+      <span class="btn-arch__label">Got it</span>
+    </button>
+  </div>
+</div>
+
+<script>
+  // The bar ships hidden and is only revealed if the visitor has not dismissed
+  // it before. A private mode browser can throw on localStorage access, so every
+  // read and write is guarded: if storage is unavailable we simply show the bar
+  // and let the visitor dismiss it for this session.
+  const bar = document.getElementById("cookie-notice");
+  const accept = document.getElementById("cookie-notice-accept");
+
+  if (bar && accept) {
+    const key = bar.dataset.storageKey || "tik-cookie-notice-dismissed";
+
+    function alreadyDismissed() {
+      try {
+        return window.localStorage.getItem(key) === "true";
+      } catch {
+        return false;
+      }
+    }
+
+    function remember() {
+      try {
+        window.localStorage.setItem(key, "true");
+      } catch {
+        // Storage blocked. The bar stays dismissed for this page view only.
+      }
+    }
+
+    function show() {
+      bar.hidden = false;
+      // Next frame, so the transition runs from the off screen start state.
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => bar.setAttribute("data-visible", "true"));
+      });
+    }
+
+    function dismiss() {
+      remember();
+      bar.setAttribute("data-visible", "false");
+      const done = () => {
+        bar.hidden = true;
+        bar.removeEventListener("transitionend", done);
+      };
+      bar.addEventListener("transitionend", done);
+      // Fallback for when no transition fires (reduced motion, tab in background).
+      window.setTimeout(done, 600);
+    }
+
+    accept.addEventListener("click", dismiss);
+
+    if (!alreadyDismissed()) show();
+  }
+</script>
