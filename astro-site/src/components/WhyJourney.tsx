@@ -2,13 +2,13 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const PANELS: { img: string; title: string; desc: string }[] = [
-  { img: "/assets/hero-spread.jpg", title: "Freshly prepared", desc: "Cooked on the day of your event with overnight marinations, never held or reheated." },
-  { img: "/assets/biryani-hyderabadi.jpg", title: "Authentic recipes", desc: "Heritage Hyderabadi and South Indian preparations, exactly as they are meant to taste." },
-  { img: "/assets/south-indian.jpg", title: "Vegetarian and Halal", desc: "Generous plant-based menus and certified halal options for every guest at your table." },
-  { img: "/assets/hero-interior.jpg", title: "Corporate and family", desc: "From intimate dinners to 500-guest receptions, scaled with the same care." },
-  { img: "/assets/menu-appetizer-hero.jpg", title: "Custom spice levels", desc: "Tuned to your guests, mild, medium, or genuinely fiery, your call." },
-  { img: "/assets/gallery-2.jpg", title: "Professional service", desc: "Setup, serving and cleanup handled with quiet, attentive hospitality." },
+const PANELS: { img: string; alt: string; title: string; desc: string }[] = [
+  { img: "/assets/new-images/catering-01.webp", alt: "An overhead spread of dosas, samosas, fried chicken, curry and chutneys across a laid table", title: "Freshly prepared", desc: "Cooked on the day of your event with overnight marinations, never held or reheated." },
+  { img: "/assets/biryani-hyderabadi.jpg", alt: "Authentic recipes", title: "Authentic recipes", desc: "Heritage Hyderabadi and South Indian preparations, exactly as they are meant to taste." },
+  { img: "/assets/new-images/catering-03.webp", alt: "A table set with folded dosa, samosas, chutneys, mango lassi and filter coffee in a steel tumbler", title: "Vegetarian and Halal", desc: "Generous plant-based menus and certified halal options for every guest at your table." },
+  { img: "/assets/hero-interior.jpg", alt: "Corporate and family", title: "Corporate and family", desc: "From intimate dinners to 500-guest receptions, scaled with the same care." },
+  { img: "/assets/menu-appetizer-hero.jpg", alt: "Custom spice levels", title: "Custom spice levels", desc: "Tuned to your guests, mild, medium, or genuinely fiery, your call." },
+  { img: "/assets/gallery-2.jpg", alt: "Professional service", title: "Professional service", desc: "Setup, serving and cleanup handled with quiet, attentive hospitality." },
 ];
 
 type Mode = "pin" | "swipe" | "stack";
@@ -17,7 +17,7 @@ function Panel({ p, index }: { p: (typeof PANELS)[number]; index: number }) {
   return (
     <div className="why-panel-inner grid gap-10 md:gap-16 md:grid-cols-[1.1fr_0.9fr] items-center w-full">
       <div className="relative aspect-[4/3] md:aspect-[4/5] max-h-[50vh] md:max-h-[60vh] w-full overflow-hidden rounded-[2rem] ring-1 ring-saffron/15 shadow-2xl">
-        <img src={p.img} alt={p.title} loading="lazy" className="size-full object-cover" />
+        <img src={p.img} alt={p.alt} loading="lazy" className="size-full object-cover" />
         <div className="absolute inset-0 bg-linear-to-t from-matte/40 to-transparent" />
       </div>
       <div className="md:pr-4">

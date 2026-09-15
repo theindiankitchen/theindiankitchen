@@ -3,12 +3,11 @@ import { ChevronLeft, ChevronRight, ChefHat, Leaf, Drumstick } from "lucide-reac
 import { CATEGORIES } from "../data/menu";
 
 // Dish photos live in /public/assets so they resolve from this React island.
-const riceSchezwan = "/assets/rice-schezwan.jpg";
 const sigKeemaDosa = "/assets/sig-keema-dosa.jpg";
 const sigButterChickenDosa = "/assets/sig-butter-chicken-dosa.jpg";
 const imgBenneDosa = "/assets/dishes/benne-dosa.jpg";
 const imgBennePodiDosa = "/assets/dishes/benne-podi-dosa.jpg";
-const imgChickenVindolaDosa = "/assets/dishes/chicken-vindola-dosa.jpg";
+const imgGunturKaaramDosa = "/assets/dishes/guntur-karam-dosa.jpg";
 const imgPizzaDosa = "/assets/dishes/pizza-dosa.jpg";
 
 type Dish = {
@@ -50,11 +49,11 @@ const SIGNATURE: Omit<Dish, "price" | "veg">[] = [
   { name: "Benne Ghee Podi Dosa", menuName: "Benne Ghee Podi Dosa (2pcs)", tagline: "Butter dosa dusted with spicy ghee podi", image: imgBennePodiDosa, chefSpecial: true },
   { name: "Mutton Keema Dosa", menuName: "Mutton Kheema Dosa", tagline: "Crisp dosa rolled with spiced mince", image: sigKeemaDosa, chefSpecial: true },
   { name: "Butter Chicken Dosa", tagline: "Creamy butter chicken in a golden crepe", image: sigButterChickenDosa, chefSpecial: true },
-  { name: "Chicken Vindaloo Dosa", tagline: "Tangy Goan-style vindaloo chicken in a crisp dosa", image: imgChickenVindolaDosa, chefSpecial: true },
-  { name: "Pizza Dosa", tagline: "Indo-fusion cheese, capsicum and house masala on dosa", image: imgPizzaDosa, chefSpecial: true },
-  { name: "Devil Chicken Fried Rice", menuName: "Devil Chicken Fried", tagline: "Fiery chili-oil glazed basmati, slow-building heat", image: riceSchezwan, chefSpecial: true },
-  { name: "Chicken Natti Kurma Wrap", tagline: "Country chicken kurma rolled in flaky parota.", image: "assets/dishes/chicken-natti-kurma-wrap.png", chefSpecial: true },
-  { name: "Fried Chicken Wings", tagline: "Oversized wings, crisp-fried and tossed in house masala", image: "assets/dishes/jumbo-wings.jpg", chefSpecial: true },
+  { name: "Guntur Kaaram Dosa", tagline: "Andhra chili powder painted across a ghee-roasted dosa", image: imgGunturKaaramDosa, chefSpecial: true },
+  { name: "Pizza Dosa", menuName: "Pizza Dosa - Chef Spcl", tagline: "Indo-fusion cheese, capsicum and house masala on dosa", image: imgPizzaDosa, chefSpecial: true },
+  { name: "Mutton Chukka Fry", tagline: "Boneless mutton dry-roasted with black pepper and spice", image: "/assets/dishes/mutton-chukka-fry.jpg", chefSpecial: true },
+  { name: "Chicken Nutty Kurma Wrap", tagline: "Country chicken kurma rolled in flaky parota.", image: "/assets/dishes/chicken-natti-kurma-wrap.png", chefSpecial: true },
+  { name: "House Special Prawns", tagline: "Golden, crunchy, deeply spiced prawn bites", image: "/assets/dishes/crispy-prawn-fry.jpg", chefSpecial: true },
 ];
 
 const DISHES: Dish[] = SIGNATURE.map((d) => ({ ...d, ...fromMenu(d.menuName ?? d.name) }));

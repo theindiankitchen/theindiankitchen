@@ -34,7 +34,7 @@ const description =
   </section>
 
   {/* CUISINE bar: jump-to category chips, first thing after the hero.
-      Wraps on every width so all 23 chips stay on screen with no overflow. */}
+      Wraps on every width so all 24 chips stay on screen with no overflow. */}
   <section aria-label="Menu categories" class="bg-cream-pattern text-olive py-6 md:py-8">
     <div class="container-x">
       <div class="flex flex-wrap justify-center items-center gap-2 md:gap-2.5">
@@ -57,6 +57,7 @@ const description =
       title={c.label}
       subtitle={c.subtitle}
       intro={c.intro}
+      addons={c.addons}
       items={c.items}
     />
   ))}
@@ -65,9 +66,8 @@ const description =
   <section class="bg-olive text-beige/60 py-8 md:py-10 border-t border-beige/10">
     <div class="container-x">
       <p class="text-xs md:text-sm leading-relaxed max-w-3xl mx-auto text-center">
-        If you have any allergies, please let us know before you order. We will do our best to
-        help, but please note our kitchen uses all major allergens. Please ask our staff for
-        more information.
+        If you have any allergies, please let us know before you order. Our kitchen uses all
+        major allergens, please ask our staff for more information.
       </p>
     </div>
   </section>

@@ -58,7 +58,7 @@ export default function MenuPreview() {
                 <motion.img
                   key={active.name}
                   src={active.image || FALLBACK_IMAGE}
-                  alt={active.name}
+                  alt={active.image ? active.alt ?? active.name : active.name}
                   loading="lazy"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -149,7 +149,7 @@ export default function MenuPreview() {
                             <p className="text-sm text-beige/60">{d.desc}</p>
                             <img
                               src={d.image || FALLBACK_IMAGE}
-                              alt={d.name}
+                              alt={d.image ? d.alt ?? d.name : d.name}
                               loading="lazy"
                               className="mt-3 w-full aspect-[4/3] object-cover rounded-2xl ring-1 ring-saffron/15"
                             />
@@ -161,8 +161,19 @@ export default function MenuPreview() {
                 );
               })}
             </div>
+
+            {/* Printed add-on line for the section, quiet, under the list. */}
+            {category.addons && (
+              <p className="mt-5 text-xs md:text-sm text-beige/50">{category.addons}</p>
+            )}
           </div>
         </div>
+
+        {/* Allergy notice, quiet, at the foot of the preview. */}
+        <p className="mt-14 md:mt-16 text-xs md:text-sm leading-relaxed text-beige/50 max-w-3xl mx-auto text-center">
+          If you have any allergies, please let us know before you order. Our kitchen uses all
+          major allergens, please ask our staff for more information.
+        </p>
       </div>
     </section>
   );

@@ -11,6 +11,8 @@ export type MenuSectionProps = {
   /** Printed section subtitle, e.g. "Non-Veg, Bone In". */
   subtitle?: string;
   intro?: string;
+  /** Printed add-on line for the section, shown under its items. */
+  addons?: string;
   items: MenuItem[];
   /** Alternating section background down the menu page. */
   variant?: "green" | "cream";
@@ -84,7 +86,7 @@ function EdgeArrow({ dir, onClick, label }: { dir: 1 | -1; onClick: () => void; 
   );
 }
 
-export default function CinematicMenuSection({ id, kicker, title, subtitle, intro, items, variant = "green" }: MenuSectionProps) {
+export default function CinematicMenuSection({ id, kicker, title, subtitle, intro, addons, items, variant = "green" }: MenuSectionProps) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const cream = variant === "cream";
 
@@ -138,7 +140,7 @@ export default function CinematicMenuSection({ id, kicker, title, subtitle, intr
                 {item.image ? (
                   <img
                     src={item.image}
-                    alt={item.name}
+                    alt={item.alt ?? item.name}
                     loading="lazy"
                     width={1024}
                     height={768}
@@ -189,6 +191,13 @@ export default function CinematicMenuSection({ id, kicker, title, subtitle, intr
         <EdgeArrow dir={-1} onClick={() => scrollBy(-1)} label={`Scroll ${title} left`} />
         <EdgeArrow dir={1} onClick={() => scrollBy(1)} label={`Scroll ${title} right`} />
       </div>
+
+      {/* Printed add-on line for the section, quiet, under the items. */}
+      {addons && (
+        <div className="container-x">
+          <p className={`mt-4 text-xs md:text-sm ${cream ? "text-olive/55" : "text-beige/50"}`}>{addons}</p>
+        </div>
+      )}
     </section>
   );
 }
