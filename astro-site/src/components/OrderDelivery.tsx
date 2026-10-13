@@ -26,7 +26,7 @@ export default function OrderDelivery({ uberUrl, doordashUrl, pickupUrl }: Props
         </div>
         <div className="mt-14 grid sm:grid-cols-3 gap-5 max-w-4xl mx-auto">
           {ORDER.map((o) => (
-            <a key={o.name} href={o.href} className="exotic-border corner-ornaments group p-8 bg-beige border-saffron text-olive shadow-[inset_0_0_0_1px_rgba(179,101,18,0.2),0_0_25px_-8px_rgba(179,101,18,0.22)] hover:-translate-y-1 hover:shadow-[inset_0_0_0_1px_rgba(179,101,18,0.2),0_10px_40px_-10px_rgba(179,101,18,0.25)] transition-all duration-300">
+            <a key={o.name} href={o.href} target="_blank" rel="noopener noreferrer" className="exotic-border corner-ornaments group p-8 bg-beige border-saffron text-olive shadow-[inset_0_0_0_1px_rgba(179,101,18,0.2),0_0_25px_-8px_rgba(179,101,18,0.22)] hover:-translate-y-1 hover:shadow-[inset_0_0_0_1px_rgba(179,101,18,0.2),0_10px_40px_-10px_rgba(179,101,18,0.25)] transition-all duration-300">
               <span className="corner tl" /><span className="corner tr" /><span className="corner bl" /><span className="corner br" />
               <div className="flex items-start justify-between">
                 <h3 className="font-serif text-2xl">{o.name}</h3>
