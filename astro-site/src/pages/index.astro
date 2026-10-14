@@ -9,11 +9,10 @@ import ReviewsCarousel from "../components/ReviewsCarousel.tsx";
 import OrderDelivery from "../components/OrderDelivery.tsx";
 
 // ---------------------------------------------------------------------------
-// Delivery storefront links. Uber Eats and DoorDash open in a new tab.
+// Ordering links. One ordering page, pickup mode and delivery mode.
 // ---------------------------------------------------------------------------
-const UBER_EATS_URL = "https://theindiankitchen.bycalibre.ca/menu";
-const DOORDASH_URL = "https://theindiankitchen.bycalibre.ca/menu";
 const PICKUP_URL = "https://theindiankitchen.bycalibre.ca/menu";
+const DELIVERY_URL = "https://theindiankitchen.bycalibre.ca/menu?switch=1";
 
 const title = "The Indian Kitchen, Biryani and Dosa | Toronto";
 const description =
@@ -68,7 +67,7 @@ const description =
         <a href="/#menu" class="btn-arch btn-arch--solid text-[10px] px-4 py-3 md:text-[0.72rem] md:px-[2.15rem] md:py-[0.95rem]">
           <span class="btn-arch__label">View Menu</span>
         </a>
-        <a href="#order" class="btn-arch btn-arch--outline text-[10px] px-4 py-3 md:text-[0.72rem] md:px-[2.15rem] md:py-[0.95rem]" style="--btn-outline-fill: #22221f;">
+        <a href={PICKUP_URL} target="_blank" rel="noopener noreferrer" class="btn-arch btn-arch--outline text-[10px] px-4 py-3 md:text-[0.72rem] md:px-[2.15rem] md:py-[0.95rem]" style="--btn-outline-fill: #22221f;">
           <span class="btn-arch__label">Order Online</span>
         </a>
       </div>
@@ -103,7 +102,7 @@ const description =
   {/* ORDER: original Lovable Order and Delivery section (cream bracket cards). */}
 
   <div id="order">
-  <OrderDelivery uberUrl={UBER_EATS_URL} doordashUrl={DOORDASH_URL} pickupUrl={PICKUP_URL} />
+  <OrderDelivery pickupUrl={PICKUP_URL} deliveryUrl={DELIVERY_URL} />
 </div>
 
   {/* INSTAGRAM: video reels, placed above the reviews. */}

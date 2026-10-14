@@ -1,18 +1,16 @@
 import { ArrowUpRight } from "lucide-react";
 
 type Props = {
-  uberUrl: string;
-  doordashUrl: string;
   pickupUrl: string;
+  deliveryUrl: string;
 };
 
 // Exact port of the original Lovable "Order and Delivery" section
 // (src/routes/index.tsx). Copy, not reinterpretation.
-export default function OrderDelivery({ uberUrl, doordashUrl, pickupUrl }: Props) {
+export default function OrderDelivery({ pickupUrl, deliveryUrl }: Props) {
   const ORDER = [
-    { name: "Uber Eats", desc: "20–30 min delivery", cta: "Order on Uber", href: uberUrl },
-    { name: "DoorDash", desc: "Late-night until 1AM", cta: "Order on DoorDash", href: doordashUrl },
     { name: "Pickup", desc: "Ready in 15 min", cta: "Order Pickup", href: pickupUrl },
+    { name: "Delivery", desc: "20-30 min delivery", cta: "Order Delivery", href: deliveryUrl },
   ];
 
   return (
@@ -24,7 +22,7 @@ export default function OrderDelivery({ uberUrl, doordashUrl, pickupUrl }: Props
           <h2 className="font-serif text-4xl md:text-6xl mt-3">Bring The Kitchen home.</h2>
           <p className="mt-5 text-beige/70">Delivery and pickup available across downtown Toronto.</p>
         </div>
-        <div className="mt-14 grid sm:grid-cols-3 gap-5 max-w-4xl mx-auto">
+        <div className="mt-14 grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
           {ORDER.map((o) => (
             <a key={o.name} href={o.href} target="_blank" rel="noopener noreferrer" className="exotic-border corner-ornaments group p-8 bg-beige border-saffron text-olive shadow-[inset_0_0_0_1px_rgba(179,101,18,0.2),0_0_25px_-8px_rgba(179,101,18,0.22)] hover:-translate-y-1 hover:shadow-[inset_0_0_0_1px_rgba(179,101,18,0.2),0_10px_40px_-10px_rgba(179,101,18,0.25)] transition-all duration-300">
               <span className="corner tl" /><span className="corner tr" /><span className="corner bl" /><span className="corner br" />
