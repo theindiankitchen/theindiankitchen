@@ -355,7 +355,7 @@ export const CATEGORIES: MenuCategory[] = [
     intro: "Real-fruit shakes, saffron milks and old-city coolers, all chilled.",
     items: [
       { name: "Special Chikoo Shake (Real Fruit)", desc: "Sapodilla shake, creamy, malty, naturally sweet.", price: "6.99", spice: 0, veg: true, alt: "Special Chikoo Shake, a creamy sapodilla shake in a tall glass", image: "/assets/new-images/TheIndianKitchenBiryaniAndDosa_SpecialChikooShake.webp", popular: true, featured: true },
-      { name: "Custard Apple Shake (Real Fruit)", desc: "Sitaphal blended into a silky, fragrant shake.", price: "6.99", spice: 0, veg: true, image: "/assets/dishes/custard-apple-shake.jpg" },
+      { name: "Custard Apple Shake (Real Fruit)", desc: "Sitaphal blended into a silky, fragrant shake.", price: "9.99", spice: 0, veg: true, image: "/assets/dishes/custard-apple-shake.jpg" },
       { name: "SPL Badam Milk", desc: "Saffron-almond milk, lightly cardamom-spiced.", price: "7.99", spice: 0, veg: true, image: "/assets/dishes/badam-milk.jpg" },
       { name: "Rose Milk (Original Taste)", desc: "Chilled milk with house rose syrup.", price: "7.99", spice: 0, veg: true, image: "/assets/dishes/rose-milk.jpg" },
       { name: "Mohabbath Ka Sharbath", desc: "Old Delhi summer cooler, watermelon, rose, chilled milk.", price: "7.99", spice: 0, veg: true, image: "/assets/dishes/mohabbat-ka-sharbat.jpg" },
