@@ -66,6 +66,17 @@ const restaurantJsonLd = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
 
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC3REZN2M9"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-BC3REZN2M9");
+    </script>
+
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="The Indian Kitchen, Biryani and Dosa" />
     <meta property="og:title" content={title} />
