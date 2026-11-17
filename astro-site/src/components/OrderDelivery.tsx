@@ -20,7 +20,7 @@ export default function OrderDelivery({ pickupUrl, deliveryUrl }: Props) {
       <div className="container-x relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-serif text-4xl md:text-6xl mt-3">Bring The Kitchen home.</h2>
-          <p className="mt-5 text-beige/70">Delivery and pickup available across downtown Toronto.</p>
+          <p className="mt-5 text-beige/70">Delivery and pickup available across Midtown Toronto — Yonge &amp; Lawrence, Lawrence Park, Bedford Park and North York.</p>
         </div>
         <div className="mt-14 grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
           {ORDER.map((o) => (
