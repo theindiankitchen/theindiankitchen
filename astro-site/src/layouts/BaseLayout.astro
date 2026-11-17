@@ -13,7 +13,7 @@ export interface Props {
 
 const { title, description, ogImage = "/assets/hero-spread.jpg" } = Astro.props;
 
-const site = Astro.site ?? new URL("https://www.theindiankitchen.ca");
+const site = Astro.site ?? new URL("https://biryanianddosa.ca");
 const canonical = new URL(Astro.url.pathname, site).href;
 const ogImageAbsolute = new URL(ogImage, site).href;
 
