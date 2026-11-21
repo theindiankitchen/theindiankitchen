@@ -1,0 +1,245 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Benne Dosa & Masala Dosa in Toronto | The Indian Kitchen — Yonge & Lawrence";
+const description =
+  "Crispy dosas & Karnataka benne dosas at Yonge & Lawrence, Toronto. 20+ dosas from $8.99 — masala, ghee roast, Mysore, benne & the new Firecracker Benne Dosa. Rated 4.9 on Google (570 reviews). Order direct.";
+
+const PICKUP_URL = "https://theindiankitchen.bycalibre.ca/menu";
+const DELIVERY_URL = "https://theindiankitchen.bycalibre.ca/menu?switch=1";
+
+const benne = [
+  {
+    name: "Benne Dosa Plain with Ghee",
+    desc: "Karnataka-style butter dosa, soft inside, crisp edges.",
+    price: "13.99",
+    image: "/assets/new-images/TheIndianKitchenBiryaniAndDosa_BenneDosaPlainWithGhee.webp",
+    alt: "Benne Dosa Plain with Ghee, Karnataka butter dosa with chutneys",
+  },
+  {
+    name: "Benne Masala Dosa (2 pcs)",
+    desc: "Karnataka butter dosa folded over potato masala.",
+    price: "14.99",
+    image: "/assets/dishes/benne-masala-dosa.png",
+    alt: "Benne Masala Dosa, butter dosa folded over potato masala",
+  },
+  {
+    name: "Benne Ghee Podi Dosa (2 pcs)",
+    desc: "Butter dosa dusted with spicy ghee podi.",
+    price: "14.99",
+    image: "/assets/dishes/benne-podi-dosa.jpg",
+    alt: "Benne Ghee Podi Dosa, butter dosa dusted with spicy ghee podi",
+  },
+  {
+    name: "Benne Ghee Podi Masala Dosa",
+    desc: "Butter dosa with spicy ghee podi and potato masala.",
+    price: "15.99",
+    image: "",
+    alt: "Benne Ghee Podi Masala Dosa",
+  },
+];
+
+const classics = [
+  { name: "Plain Dosa", price: "8.99" },
+  { name: "Onion Dosa", price: "9.99" },
+  { name: "Ghee Roast Dosa", price: "10.99" },
+  { name: "Mysore Plain Dosa", price: "10.99" },
+  { name: "Kids / Cone Dosa", price: "10.99" },
+  { name: "Masala Dosa", price: "11.99" },
+  { name: "Ghee Roast Podi Dosa", price: "11.99" },
+  { name: "Mysore Masala Dosa", price: "12.99" },
+  { name: "Cheese Dosa", price: "14.99" },
+  { name: "Guntur Kaaram Dosa", price: "14.99" },
+  { name: "Double Egg Kaaram Dosa", price: "14.99" },
+  { name: "Pizza Dosa — Chef Special", price: "15.99" },
+  { name: "Paneer Dosa", price: "16.99" },
+  { name: "Butter Chicken Dosa", price: "16.99" },
+  { name: "Mutton Kheema Dosa", price: "17.99" },
+  { name: "Dosa with Chicken Curry", price: "17.99" },
+  { name: "Dosa with Mutton Curry", price: "18.99" },
+];
+
+const faqs = [
+  {
+    q: "Where can I get dosa near Yonge & Lawrence?",
+    a: "At The Indian Kitchen, 3334 Yonge St, a few minutes' walk north of Lawrence station — 20+ dosas from $8.99, rated 4.9 on Google.",
+  },
+  {
+    q: "What is a benne dosa?",
+    a: "“Benne” means butter in Kannada. It is a Karnataka-style dosa — thicker and softer inside than a classic dosa, with crisp edges, cooked generously in white butter and ghee.",
+  },
+  {
+    q: "Are your dosas vegetarian?",
+    a: "Most are — plain, masala, Mysore, benne, cheese and paneer dosas are all vegetarian, and we can make several without onion and garlic on request.",
+  },
+  {
+    q: "When are dosas served?",
+    a: "All day, 11 AM – 11 PM, every day except Tuesdays (closed). Dine in, or order pickup and delivery.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+---
+
+<BaseLayout title={title} description={description} ogImage="/assets/new-images/TheIndianKitchenBiryaniAndDosa_BenneDosaPlainWithGhee.webp">
+  <Fragment slot="hero">
+    {/* BRAND HEADER: official logo on olive, matching the site footer pattern. */}
+    <section class="text-center pt-24 pb-2" style="background-color: var(--olive);">
+      <img
+        src="/assets/official-logo.png"
+        alt="The Indian Kitchen, Biryani and Dosa"
+        class="mx-auto h-24 md:h-28 w-auto max-w-[80vw] object-contain drop-shadow-[0_6px_18px_rgba(0,0,0,0.45)]"
+      />
+      <p class="mt-3 text-[11px] uppercase tracking-[0.34em] text-saffron">3334 Yonge St · Yonge &amp; Lawrence, Toronto</p>
+    </section>
+
+    {/* HERO */}
+    <section class="reveal-hero flex items-center justify-center text-center" style="background-color: var(--olive);">
+      <div class="container-x relative z-10 max-w-3xl pt-10 pb-4">
+        <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.05]">
+          Dosa &amp; Benne Dosa in <span class="text-saffron">Toronto</span>
+        </h1>
+        <p class="mt-6 text-beige/80 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+          Batter fermented fresh in-house, poured thin and ghee-roasted to a deep gold — classic
+          Madras dosas and soft, buttery Karnataka benne dosas, served with chutneys and
+          piping-hot sambar at 3334 Yonge St.
+        </p>
+        <p class="mt-5 text-saffron tracking-[0.2em]">★★★★★ <span class="text-beige/85 tracking-normal">Rated 4.9 on Google · 570 reviews</span></p>
+        <div class="mt-9 flex flex-wrap justify-center gap-4">
+          <a href={PICKUP_URL} class="btn-arch btn-arch--solid">
+            <span class="btn-arch__label">Order Pickup — Ready in 15 min</span>
+          </a>
+          <a href={DELIVERY_URL} class="btn-arch">
+            <span class="btn-arch__label">Order Delivery</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </Fragment>
+
+  {/* FIRECRACKER LAUNCH STRIP */}
+  <section class="relative py-12 md:py-14 text-center" style="background-color: var(--saffron);">
+    <div class="container-x max-w-3xl">
+      <h2 class="font-serif text-3xl md:text-4xl text-beige">Just Launched — Firecracker Benne Dosa</h2>
+      <p class="mt-4 text-beige/90 leading-relaxed">
+        Our new Chicken and Paneer Firecracker Benne Dosas — crisp benne dosa with a fiery house
+        topping. Spice your way: mild, medium, hot or extra hot.
+      </p>
+    </div>
+  </section>
+
+  {/* BENNE DOSA */}
+  <section class="relative py-16 md:py-20 bg-cream-pattern text-olive">
+    <div class="container-x">
+      <div class="text-center">
+        <span class="text-[11px] uppercase tracking-[0.4em] text-saffron">Karnataka Butter Dosa</span>
+        <h2 class="font-serif text-3xl md:text-5xl mt-4 text-olive">Benne Dosa</h2>
+        <p class="mt-4 text-olive/75 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+          Thick, soft inside with crisp golden edges, cooked in white butter the Davanagere way.
+          The dosa we are known for.
+        </p>
+      </div>
+      <div class="mt-10 grid sm:grid-cols-2 gap-5 max-w-4xl mx-auto">
+        {benne.map((d) => (
+          <article class="rounded-[1.6rem] ring-1 ring-saffron/25 bg-white overflow-hidden">
+            {d.image && <img src={d.image} alt={d.alt} class="w-full h-52 object-cover" loading="lazy" />}
+            <div class="p-7">
+              <h3 class="font-serif text-2xl text-olive">{d.name}</h3>
+              <p class="mt-2 text-olive/70 text-sm leading-relaxed">{d.desc}</p>
+              <p class="mt-4 font-serif text-xl text-saffron">${d.price}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* CLASSIC & SPECIAL DOSAS */}
+  <section class="relative py-16 md:py-20 bg-cream-pattern text-olive">
+    <div class="container-x">
+      <div class="text-center">
+        <span class="text-[11px] uppercase tracking-[0.4em] text-saffron">Madras Mornings</span>
+        <h2 class="font-serif text-3xl md:text-5xl mt-4 text-olive">Classic &amp; Special Dosas</h2>
+        <p class="mt-4 text-olive/75 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+          Twenty dosas on the menu — here is the full line-up, all served with chutneys and sambar.
+        </p>
+      </div>
+      <div class="mt-10 max-w-4xl mx-auto rounded-[1.6rem] ring-1 ring-saffron/25 bg-white px-7 py-3">
+        {classics.map((s) => (
+          <div class="flex items-baseline justify-between gap-4 py-3 border-b border-saffron/10 last:border-b-0">
+            <span class="text-olive">{s.name}</span>
+            <span class="whitespace-nowrap font-serif text-lg text-saffron">${s.price}</span>
+          </div>
+        ))}
+      </div>
+      <p class="mt-6 text-center text-olive/70">
+        Add-ons: onions $0.99 · masala $1.99 · ghee $0.99. Pair it with a Madras filter coffee — $3.49.
+      </p>
+    </div>
+  </section>
+
+  {/* ONLY DOSA SPECIALIST */}
+  <section class="relative py-16 md:py-20 text-center" style="background-color: var(--olive);">
+    <div class="container-x max-w-3xl">
+      <h2 class="font-serif text-3xl md:text-5xl text-beige">The only dosa specialist at Yonge &amp; Lawrence</h2>
+      <p class="mt-5 text-beige/80 text-base md:text-lg leading-relaxed">
+        There is no other dosa kitchen within about 5 km — the nearest are across town. Our batter
+        is fermented fresh, every dosa is roasted to order, and the benne dosa is the one guests
+        drive in for. Vegetarian, vegan-friendly and Jain-style options — just ask.
+      </p>
+    </div>
+  </section>
+
+  {/* FAQ */}
+  <section class="relative py-16 md:py-20 bg-cream-pattern text-olive">
+    <div class="container-x max-w-3xl">
+      <h2 class="font-serif text-3xl md:text-5xl text-center text-olive">Questions</h2>
+      <div class="mt-8">
+        {faqs.map((f) => (
+          <div class="mt-7">
+            <h3 class="font-serif text-xl text-olive">{f.q}</h3>
+            <p class="mt-2 text-olive/75 leading-relaxed">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* VISIT OR ORDER */}
+  <section class="relative py-16 md:py-20 text-center" style="background-color: var(--olive);">
+    <div class="container-x">
+      <h2 class="font-serif text-3xl md:text-5xl text-beige">Visit or order</h2>
+      <p class="mt-5 text-beige/80 leading-relaxed">
+        3334 Yonge St, North York, Toronto, ON M4N 2M4<br />
+        Open 11 AM – 11 PM · Closed Tuesdays<br />
+        <a href="tel:+12894221215" class="text-saffron hover:underline">Call (289) 422-1215</a>
+      </p>
+      <div class="mt-9 flex flex-wrap justify-center gap-4">
+        <a href={PICKUP_URL} class="btn-arch btn-arch--solid">
+          <span class="btn-arch__label">Order Pickup</span>
+        </a>
+        <a href={DELIVERY_URL} class="btn-arch">
+          <span class="btn-arch__label">Order Delivery</span>
+        </a>
+        <a href="/menu" class="btn-arch">
+          <span class="btn-arch__label">See the full menu</span>
+        </a>
+      </div>
+      <p class="mt-8 text-beige/60 text-sm">
+        Also explore: <a href="/biryani-toronto" class="text-saffron hover:underline">Hyderabadi Dum Biryani in Toronto</a>
+        <span class="text-beige/30 mx-1">·</span>
+        <a href="/catering" class="text-saffron hover:underline">Indian Catering</a>
+      </p>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+</BaseLayout>

@@ -1,0 +1,254 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Hyderabadi Dum Biryani in Toronto | The Indian Kitchen — Yonge & Lawrence";
+const description =
+  "Authentic Hyderabadi dum biryani at Yonge & Lawrence, Toronto. Chicken, mutton, veg & boneless biryanis from $17.99 — For 1 or For 3. Rated 4.9 on Google (570 reviews). Order direct for pickup & delivery.";
+
+const PICKUP_URL = "https://theindiankitchen.bycalibre.ca/menu";
+const DELIVERY_URL = "https://theindiankitchen.bycalibre.ca/menu?switch=1";
+
+const signatures = [
+  {
+    name: "Hyd Chicken Dum Biryani",
+    badge: "Most loved",
+    desc: "Slow-cooked in a sealed handi with saffron, mint and whole spices.",
+    for1: "17.99",
+    for3: "34.99",
+    image: "/assets/new-images/TheIndianKitchenBiryaniAndDosa_HydChickenDumBiryani.webp",
+    alt: "Hyd Chicken Dum Biryani, bone-in chicken layered through saffron basmati",
+  },
+  {
+    name: "Hyd Mutton Dum Biryani",
+    badge: "",
+    desc: "Bone-in mutton slow-cooked Hyderabadi dum style with saffron and mint.",
+    for1: "18.49",
+    for3: "37.99",
+    image: "/assets/new-images/TheIndianKitchenBiryaniAndDosa_HydMuttonDumBiryani_2880x2304.webp",
+    alt: "Hyd Mutton Dum Biryani, bone-in mutton in fragrant saffron rice",
+  },
+  {
+    name: "Donne Biryani (Chicken)",
+    badge: "",
+    desc: "Bangalore military-style, short-grain seeraga samba rice with mint masala.",
+    for1: "17.99",
+    for3: "34.99",
+    image: "/assets/biryani-donne.jpg",
+    alt: "Donne Biryani, Bangalore-style chicken biryani served in a donne leaf cup",
+  },
+  {
+    name: "Madurai SPL Mutton Biryani",
+    badge: "Weekends only",
+    desc: "Madurai-style mutton biryani, rich and deeply spiced.",
+    for1: "18.49",
+    for3: "37.99",
+    image: "/assets/dishes/madurai-spl-mutton-biryani.png",
+    alt: "Madurai SPL Mutton Biryani, rich and deeply spiced",
+  },
+];
+
+const specials = [
+  { name: "Paneer Ghee Roast Biryani (veg)", for1: "19.99", for3: "35.99" },
+  { name: "Mixed Veg Biryani (veg)", for1: "19.99", for3: "35.99" },
+  { name: "Mushroom Biryani (veg)", for1: "19.99", for3: "35.99" },
+  { name: "Egg Fry Biryani (2 eggs)", for1: "19.99", for3: "35.99" },
+  { name: "Chicken Fry Piece Biryani", for1: "19.99", for3: "38.99" },
+  { name: "Bezawada SPL Chicken Biryani", for1: "19.99", for3: "38.99" },
+  { name: "Butter Chicken Biryani", for1: "19.99", for3: "38.99" },
+  { name: "Mughalai Chicken Biryani", for1: "20.49", for3: "39.99" },
+  { name: "Gongura Chicken Biryani", for1: "20.49", for3: "39.99" },
+  { name: "Gongura Mutton Biryani", for1: "21.99", for3: "40.99" },
+  { name: "Ulavacharu Chicken Biryani", for1: "21.99", for3: "40.99" },
+  { name: "Mutton Ghee Roast Biryani", for1: "21.99", for3: "40.99" },
+  { name: "Mutton Chukka Biryani", for1: "23.99", for3: "46.99" },
+];
+
+const faqs = [
+  {
+    q: "Where can I get Hyderabadi dum biryani near Yonge & Lawrence?",
+    a: "At The Indian Kitchen, 3334 Yonge St — a few minutes' walk north of Lawrence station. We are the only biryani and dosa specialist in the neighbourhood, rated 4.9 on Google.",
+  },
+  {
+    q: "Do you have vegetarian biryani?",
+    a: "Yes — Paneer Ghee Roast, Mixed Veg and Mushroom biryanis, all cooked under dum with aged basmati, from $19.99.",
+  },
+  {
+    q: "Can I order biryani for the family?",
+    a: "Every biryani comes in a For 3 size, from $34.99 — sealed, generous, and ready for pickup in about 15 minutes or delivered across Midtown Toronto.",
+  },
+  {
+    q: "How spicy is it?",
+    a: "You choose. Tell us mild, medium or hot when you order and we tune it to your table.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+---
+
+<BaseLayout title={title} description={description} ogImage="/assets/new-images/TheIndianKitchenBiryaniAndDosa_HydChickenDumBiryani.webp">
+  <Fragment slot="hero">
+    {/* BRAND HEADER: official logo on olive, matching the site footer pattern. */}
+    <section class="text-center pt-24 pb-2" style="background-color: var(--olive);">
+      <img
+        src="/assets/official-logo.png"
+        alt="The Indian Kitchen, Biryani and Dosa"
+        class="mx-auto h-24 md:h-28 w-auto max-w-[80vw] object-contain drop-shadow-[0_6px_18px_rgba(0,0,0,0.45)]"
+      />
+      <p class="mt-3 text-[11px] uppercase tracking-[0.34em] text-saffron">3334 Yonge St · Yonge &amp; Lawrence, Toronto</p>
+    </section>
+
+    {/* HERO */}
+    <section class="reveal-hero flex items-center justify-center text-center" style="background-color: var(--olive);">
+      <div class="container-x relative z-10 max-w-3xl pt-10 pb-4">
+        <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.05]">
+          Hyderabadi Dum Biryani in <span class="text-saffron">Toronto</span>
+        </h1>
+        <p class="mt-6 text-beige/80 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+          Aged basmati layered with marinated meat, sealed in a handi and slow-cooked over a low
+          flame — the dum way, exactly as it is made in Hyderabad. Served at 3334 Yonge St, and
+          delivered across Midtown.
+        </p>
+        <p class="mt-5 text-saffron tracking-[0.2em]">★★★★★ <span class="text-beige/85 tracking-normal">Rated 4.9 on Google · 570 reviews</span></p>
+        <div class="mt-9 flex flex-wrap justify-center gap-4">
+          <a href={PICKUP_URL} class="btn-arch btn-arch--solid">
+            <span class="btn-arch__label">Order Pickup — Ready in 15 min</span>
+          </a>
+          <a href={DELIVERY_URL} class="btn-arch">
+            <span class="btn-arch__label">Order Delivery</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </Fragment>
+
+  {/* SIGNATURE DUM BIRYANIS */}
+  <section class="relative py-16 md:py-20 bg-cream-pattern text-olive">
+    <div class="container-x">
+      <div class="text-center">
+        <span class="text-[11px] uppercase tracking-[0.4em] text-saffron">Signature, Slow Cooked</span>
+        <h2 class="font-serif text-3xl md:text-5xl mt-4 text-olive">Signature Dum Biryanis</h2>
+        <p class="mt-4 text-olive/75 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+          Bone-in, sealed and slow-cooked. Every biryani comes in two sizes — For 1, or For 3 for
+          the family table.
+        </p>
+      </div>
+      <div class="mt-10 grid sm:grid-cols-2 gap-5 max-w-4xl mx-auto">
+        {signatures.map((d) => (
+          <article class="rounded-[1.6rem] ring-1 ring-saffron/25 bg-white overflow-hidden">
+            <img src={d.image} alt={d.alt} class="w-full h-52 object-cover" loading="lazy" />
+            <div class="p-7">
+              <h3 class="font-serif text-2xl text-olive">
+                {d.name}
+                {d.badge && (
+                  <span class="ml-2 align-middle inline-block rounded-full bg-saffron/15 text-saffron px-2.5 py-1 text-[10px] uppercase tracking-[0.14em]">{d.badge}</span>
+                )}
+              </h3>
+              <p class="mt-2 text-olive/70 text-sm leading-relaxed">{d.desc}</p>
+              <p class="mt-4 text-olive">
+                For 1 <span class="font-serif text-xl text-saffron">${d.for1}</span>
+                <span class="text-olive/40 mx-1">·</span>
+                For 3 <span class="font-serif text-xl text-saffron">${d.for3}</span>
+              </p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* SPECIAL & BONELESS BIRYANIS */}
+  <section class="relative py-16 md:py-20 bg-cream-pattern text-olive">
+    <div class="container-x">
+      <div class="text-center">
+        <span class="text-[11px] uppercase tracking-[0.4em] text-saffron">Special, Boneless</span>
+        <h2 class="font-serif text-3xl md:text-5xl mt-4 text-olive">Special &amp; Boneless Biryanis</h2>
+        <p class="mt-4 text-olive/75 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+          From paneer ghee roast to gongura and ulavacharu — Andhra and Mughlai styles you will
+          not find elsewhere in Midtown.
+        </p>
+      </div>
+      <div class="mt-10 max-w-4xl mx-auto rounded-[1.6rem] ring-1 ring-saffron/25 bg-white px-7 py-3">
+        {specials.map((s) => (
+          <div class="flex items-baseline justify-between gap-4 py-3 border-b border-saffron/10 last:border-b-0">
+            <span class="text-olive">{s.name}</span>
+            <span class="whitespace-nowrap text-olive/80 text-sm">
+              For 1 <span class="text-saffron font-medium">${s.for1}</span> · For 3 <span class="text-saffron font-medium">${s.for3}</span>
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* WHY OUR BIRYANI */}
+  <section class="relative py-16 md:py-20 text-center" style="background-color: var(--olive);">
+    <div class="container-x max-w-3xl">
+      <h2 class="font-serif text-3xl md:text-5xl text-beige">Why our biryani?</h2>
+      <p class="mt-5 text-beige/80 text-base md:text-lg leading-relaxed">
+        Cooked the slow way — never held, never reheated. Meat is marinated overnight, layered
+        with aged basmati, saffron and fried onions, then sealed and steamed in its own juices.
+        Spice tuned to your table: mild, medium, or genuinely fiery. Vegetarian and halal options
+        available.
+      </p>
+      <blockquote class="mt-9">
+        <p class="font-serif italic text-xl md:text-2xl text-beige leading-relaxed">
+          “The Hyderabadi biryani transports you home. Easily the best in Toronto.”
+        </p>
+        <cite class="not-italic block mt-3 text-saffron text-sm tracking-[0.14em] uppercase">— Aarav S., via Google</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  {/* FAQ */}
+  <section class="relative py-16 md:py-20 bg-cream-pattern text-olive">
+    <div class="container-x max-w-3xl">
+      <h2 class="font-serif text-3xl md:text-5xl text-center text-olive">Questions</h2>
+      <div class="mt-8">
+        {faqs.map((f) => (
+          <div class="mt-7">
+            <h3 class="font-serif text-xl text-olive">{f.q}</h3>
+            <p class="mt-2 text-olive/75 leading-relaxed">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* VISIT OR ORDER */}
+  <section class="relative py-16 md:py-20 text-center" style="background-color: var(--olive);">
+    <div class="container-x">
+      <h2 class="font-serif text-3xl md:text-5xl text-beige">Visit or order</h2>
+      <p class="mt-5 text-beige/80 leading-relaxed">
+        3334 Yonge St, North York, Toronto, ON M4N 2M4<br />
+        Open 11 AM – 11 PM · Closed Tuesdays<br />
+        <a href="tel:+12894221215" class="text-saffron hover:underline">Call (289) 422-1215</a>
+      </p>
+      <div class="mt-9 flex flex-wrap justify-center gap-4">
+        <a href={PICKUP_URL} class="btn-arch btn-arch--solid">
+          <span class="btn-arch__label">Order Pickup</span>
+        </a>
+        <a href={DELIVERY_URL} class="btn-arch">
+          <span class="btn-arch__label">Order Delivery</span>
+        </a>
+        <a href="/menu" class="btn-arch">
+          <span class="btn-arch__label">See the full menu</span>
+        </a>
+      </div>
+      <p class="mt-8 text-beige/60 text-sm">
+        Also explore: <a href="/dosa-toronto" class="text-saffron hover:underline">Dosa &amp; Benne Dosa in Toronto</a>
+        <span class="text-beige/30 mx-1">·</span>
+        <a href="/catering" class="text-saffron hover:underline">Indian Catering</a>
+      </p>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+</BaseLayout>
